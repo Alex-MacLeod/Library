@@ -29,8 +29,7 @@ public class Book extends Item implements Borrowable {
 
     @Override
     public void loan() {
-        this.onLoan = true;
-        this.loanExpiryDate = LocalDate.now().plusWeeks(STANDARD_LOAN_PERIOD_WEEKS);
+        this.loan(STANDARD_LOAN_PERIOD_WEEKS);
     }
 
     @Override
