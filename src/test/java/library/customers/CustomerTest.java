@@ -28,7 +28,7 @@ public class CustomerTest {
     public void setAddressShouldCombineValuesIntoArray() {
         String address1 = "20 Random Road";
         String address2 = "Normalford";
-        String address3 = "Clackmannanshire";
+        String address3 = "Genericshire";
         String postCode = "NW4 T3S";
         String[] testAddress = {address1, address2, address3, postCode};
         testCustomer.setAddress(address1, address2, address3, postCode);
