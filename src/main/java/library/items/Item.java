@@ -5,10 +5,10 @@ import java.util.UUID;
 
 public abstract class Item {
 
-    private final String name;
+    private String name;
     private final UUID iD;
-    private final String author;
-    private final int yearPublished;
+    private String author;
+    private int yearPublished;
     boolean onLoan;
     LocalDate loanExpiryDate;
 
@@ -25,6 +25,10 @@ public abstract class Item {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public UUID getID() {
         return iD;
     }
@@ -33,8 +37,16 @@ public abstract class Item {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public int getYearPublished() {
         return yearPublished;
+    }
+
+    public void setYearPublished(int yearPublished) {
+        this.yearPublished = yearPublished;
     }
 
     public boolean isOnLoan() {
