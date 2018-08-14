@@ -72,6 +72,7 @@ public class Customer {
     }
 
     public void borrow(Borrowable item, Long loanWeeks) {
+        //TODO: if item instanceof Book, check if customer is old enough to read the book
         this.itemsBorrowed.add(item);
         item.loan(loanWeeks);
     }
