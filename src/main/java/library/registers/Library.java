@@ -16,7 +16,7 @@ public class Library {
 
     public static Item find(UUID itemID) {
         for (Item item : itemsLibrary) {
-            if (itemID.equals(item.getiD())){
+            if (itemID.equals(item.getID())){
                 return item;
             }
         }

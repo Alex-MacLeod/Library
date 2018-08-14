@@ -25,7 +25,7 @@ public abstract class Item {
         return name;
     }
 
-    public UUID getiD() {
+    public UUID getID() {
         return iD;
     }
 

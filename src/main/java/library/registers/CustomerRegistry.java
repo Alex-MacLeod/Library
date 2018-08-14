@@ -23,10 +23,10 @@ public class CustomerRegistry {
         return null;
     }
 
-    public static List<Customer> find(String forename, String surname) {
+    public static List<Customer> find(String name) {
         List<Customer> foundCustomers = new ArrayList<>();
         for (Customer customer : customerList) {
-            if (forename.equals(customer.getForename()) && surname.equals(customer.getForename())) {
+            if (name.equals(customer.getName())) {
                 foundCustomers.add(customer);
             }
         }
