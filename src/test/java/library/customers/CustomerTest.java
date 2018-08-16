@@ -19,9 +19,9 @@ public class CustomerTest {
         testCustomer = new LibraryCustomerBuilder().name("Joe Bloggs").email("joebloggs@email.com").buildCustomer();
 
         testItem1 = new Book("Java 4 Dum-Dums", "Elliot Womack",2017,
-                false, true);
-        testItem2 = new Book("Cognitive Psience", "Wakaba Isshiki",2016,
                 false, false);
+        testItem2 = new Book("Cognitive Psience", "Wakaba Isshiki",2016,
+                false, true);
     }
 
     @Test
@@ -37,14 +37,21 @@ public class CustomerTest {
     }
 
     @Test
-    public void borrowShouldAddItemToItemsBorrowed() {
+    public void borrowShouldAddItemToItemsBorrowedOnlyIfNotOnLoan() {
         testCustomer.borrow(testItem1);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
 
-        testCustomer.borrow(testItem2, 6L);
+        testCustomer.borrow(testItem1, 6);
 
-        assertEquals(2, testCustomer.getItemsBorrowed().size());
+        assertEquals(1, testCustomer.getItemsBorrowed().size());
+    }
+
+    @Test
+    public void borrowShouldNotAddItemToItemsBorrowedIfItemRejectsLoan() {
+        testCustomer.borrow(testItem2);
+
+        assertEquals(0, testCustomer.getItemsBorrowed().size());
     }
 
     @Test

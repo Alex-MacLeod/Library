@@ -1,5 +1,8 @@
 package library.items;
 
+import library.constants.Constants;
+import library.customers.Customer;
+
 import java.time.LocalDate;
 
 public class Book extends Item implements Borrowable {
@@ -22,9 +25,14 @@ public class Book extends Item implements Borrowable {
     }
 
     @Override
-    public void loan(long loanWeeks) {
-        this.onLoan = true;
-        this.loanExpiryDate = LocalDate.now().plusWeeks(loanWeeks);
+    public void loan(Customer customer, long loanWeeks) {
+        if (!this.isForKids ||
+                LocalDate.now().minusYears(Constants.AGE_OF_MINORITY).isAfter(customer.getDateOfBirth())) {
+            this.onLoan = true;
+            this.loanExpiryDate = LocalDate.now().plusWeeks(loanWeeks);
+        } else {
+            System.out.println("Customer is too young to borrow this book");
+        }
     }
 
     @Override

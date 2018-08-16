@@ -77,10 +77,15 @@ public class LibraryCustomer implements Customer{
     }
 
     @Override
-    public void borrow(Borrowable item, Long loanWeeks) {
-        //TODO: if item instanceof Book, check if customer is old enough to read the book
-        this.itemsBorrowed.add(item);
-        item.loan(loanWeeks);
+    public void borrow(Borrowable item, long loanWeeks) {
+        if (!item.isOnLoan()) {
+            item.loan(this, loanWeeks);
+            if (item.isOnLoan()) {
+                this.itemsBorrowed.add(item);
+            }
+        } else {
+            System.out.println("You cannot borrow this item, it is already on loan!");
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package library.items;
 
 import library.constants.Constants;
+import library.customers.Customer;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,10 +12,10 @@ public interface Borrowable {
 
     boolean isOnLoan();
 
-    void loan(long loanWeeks);
+    void loan(Customer customer, long loanWeeks);
 
-    default void loan() {
-        loan(Constants.STANDARD_LOAN_PERIOD_WEEKS);
+    default void loan(Customer customer) {
+        loan(customer, Constants.STANDARD_LOAN_PERIOD_WEEKS);
     }
 
     void returnFromLoan();
