@@ -1,6 +1,6 @@
-package library.registers;
+package library.register;
 
-import library.items.Item;
+import library.item.Item;
 
 import java.util.ArrayList;
 import java.util.List;

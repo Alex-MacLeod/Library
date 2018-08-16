@@ -1,7 +1,7 @@
-package library.customers;
+package library.customer;
 
-import library.constants.Constants;
-import library.items.Borrowable;
+import library.constant.Constant;
+import library.item.Borrowable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,7 +32,7 @@ public interface Customer {
     void borrow(Borrowable item, long loanWeeks);
 
     default void borrow(Borrowable item) {
-        borrow(item, Constants.STANDARD_LOAN_PERIOD_WEEKS);
+        borrow(item, Constant.STANDARD_LOAN_PERIOD_WEEKS);
     }
 
     void returnToLibrary(UUID itemID);

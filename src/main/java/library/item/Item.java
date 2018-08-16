@@ -1,4 +1,4 @@
-package library.items;
+package library.item;
 
 import java.time.LocalDate;
 import java.util.UUID;

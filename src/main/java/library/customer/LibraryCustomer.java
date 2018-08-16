@@ -1,6 +1,6 @@
-package library.customers;
+package library.customer;
 
-import library.items.Borrowable;
+import library.item.Borrowable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

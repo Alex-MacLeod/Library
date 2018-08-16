@@ -1,6 +1,6 @@
-package library.registers;
+package library.register;
 
-import library.customers.Customer;
+import library.customer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

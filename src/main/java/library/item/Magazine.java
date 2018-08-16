@@ -1,4 +1,4 @@
-package library.items;
+package library.item;
 
 public class Magazine extends Item {
 
