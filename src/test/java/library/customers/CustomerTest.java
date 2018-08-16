@@ -16,7 +16,7 @@ public class CustomerTest {
 
     @Before
     public void setUp() {
-        testCustomer = new CustomerBuilder().name("Joe Bloggs").email("joebloggs@email.com").buildCustomer();
+        testCustomer = new LibraryCustomerBuilder().name("Joe Bloggs").email("joebloggs@email.com").buildCustomer();
 
         testItem1 = new Book("Java 4 Dum-Dums", "Elliot Womack",2017,
                 false, true);

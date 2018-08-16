@@ -9,6 +9,8 @@ public interface Borrowable {
 
     UUID getID();
 
+    boolean isOnLoan();
+
     void loan(long loanWeeks);
 
     default void loan() {

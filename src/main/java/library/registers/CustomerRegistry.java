@@ -8,14 +8,14 @@ import java.util.UUID;
 
 public class CustomerRegistry {
 
-    private static List<Customer> customerList =  new ArrayList<>();
+    private static List<Customer> libraryCustomerList =  new ArrayList<>();
 
     public static List<Customer> getRegister() {
-        return customerList;
+        return libraryCustomerList;
     }
 
     public static Customer find(UUID customerID) {
-        for (Customer customer : customerList) {
+        for (Customer customer : libraryCustomerList) {
             if (customerID.equals(customer.getCustomerID())){
                 return customer;
             }
@@ -25,7 +25,7 @@ public class CustomerRegistry {
 
     public static List<Customer> find(String name) {
         List<Customer> foundCustomers = new ArrayList<>();
-        for (Customer customer : customerList) {
+        for (Customer customer : libraryCustomerList) {
             if (name.equals(customer.getName())) {
                 foundCustomers.add(customer);
             }
