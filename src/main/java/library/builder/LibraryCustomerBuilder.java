@@ -1,4 +1,6 @@
-package library.customers;
+package library.builder;
+
+import library.customer.LibraryCustomer;
 
 import java.time.LocalDate;
 

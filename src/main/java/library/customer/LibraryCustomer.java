@@ -16,7 +16,7 @@ public class LibraryCustomer implements Customer{
     private String[] address;
     private List<Borrowable> itemsBorrowed;
 
-    LibraryCustomer(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+    public LibraryCustomer(String name, String email, LocalDate dateOfBirth, String address1, String address2,
                     String address3, String postCode) {
         this.name = name;
         this.email = email;
