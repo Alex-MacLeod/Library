@@ -29,7 +29,7 @@ public interface Customer {
 
     List<Borrowable> getItemsBorrowed();
 
-    void borrow(Borrowable item, Long loanWeeks);
+    void borrow(Borrowable item, long loanWeeks);
 
     default void borrow(Borrowable item) {
         borrow(item, Constants.STANDARD_LOAN_PERIOD_WEEKS);
