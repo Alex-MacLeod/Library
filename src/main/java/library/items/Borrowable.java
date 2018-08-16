@@ -11,7 +11,9 @@ public interface Borrowable {
 
     void loan(long loanWeeks);
 
-    void loan();
+    default void loan() {
+        loan(Constants.STANDARD_LOAN_PERIOD_WEEKS);
+    }
 
     void returnFromLoan();
 
