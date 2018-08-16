@@ -95,6 +95,8 @@ public class LibraryCustomer implements Customer{
                 itemsBorrowed.remove(item);
                 item.returnFromLoan();
                 break;
+            } else {
+                System.out.println("Customer has not borrowed this item, so cannot return it");
             }
         }
     }

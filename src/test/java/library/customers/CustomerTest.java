@@ -5,6 +5,8 @@ import library.items.Borrowable;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.*;
 
 public class CustomerTest {
@@ -55,11 +57,26 @@ public class CustomerTest {
     }
 
     @Test
-    public void returnItem() {
+    public void returnItemShouldRemoveItemFromItemsBorrowedIfCustomerHasBorrowedIt() {
+        testCustomer.setDateOfBirth(LocalDate.of(1990,1,1));
+
         testCustomer.borrow(testItem1);
         testCustomer.borrow(testItem2);
 
+        assertEquals(2, testCustomer.getItemsBorrowed().size());
+
         testCustomer.returnToLibrary(testItem1.getID());
+
+        assertEquals(1, testCustomer.getItemsBorrowed().size());
+    }
+
+    @Test
+    public void returnItemShouldNotRemoveItemFromItemsBorrowedIfCustomerHasNotBorrowedIt() {
+        testCustomer.borrow(testItem1);
+
+        assertEquals(1, testCustomer.getItemsBorrowed().size());
+
+        testCustomer.returnToLibrary(testItem2.getID());
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
     }
