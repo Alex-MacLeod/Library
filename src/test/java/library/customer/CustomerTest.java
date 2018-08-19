@@ -29,7 +29,7 @@ public class CustomerTest {
 
     @Test
     public void createNewShouldCreateANewCustomer() {
-        Customer newCustomer1 = Customer.createNew("John Doe", "johndoe@email.com",
+        Customer newCustomer1 = LibraryCustomer.createNew("John Doe", "johndoe@email.com",
                 LocalDate.of(1965, 8, 19), "141 5th Street", "Z1PC0DE");
 
         assertEquals("John Doe", newCustomer1.getName());
@@ -42,7 +42,7 @@ public class CustomerTest {
         assertNull(newCustomer1.getAddress().getCounty());
         assertEquals("Z1PC0DE", newCustomer1.getAddress().getPostCode());
 
-        Customer newCustomer2 = Customer.createNew("Samwise Gamgee", "gardeninglyfe@palantir.net",
+        Customer newCustomer2 = LibraryCustomer.createNew("Samwise Gamgee", "gardeninglyfe@palantir.net",
                 LocalDate.of(2980, 4, 6), "Bag End",
                 "Hobbiton","HO8 81T");
 
@@ -56,7 +56,7 @@ public class CustomerTest {
         assertNull(newCustomer2.getAddress().getCounty());
         assertEquals("HO8 81T", newCustomer2.getAddress().getPostCode());
 
-        Customer newCustomer3 = Customer.createNew("Harry Potter", "hpotter@hogwarts.ac.uk",
+        Customer newCustomer3 = LibraryCustomer.createNew("Harry Potter", "hpotter@hogwarts.ac.uk",
                 LocalDate.of(1980, 7, 31), "4 Privet Drive",
                 "Little Whinging","Surrey","W1Z 4RD");
 
