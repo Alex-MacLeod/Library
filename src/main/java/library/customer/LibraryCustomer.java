@@ -16,7 +16,7 @@ public class LibraryCustomer implements Customer{
     private String[] address;
     private List<Borrowable> itemsBorrowed;
 
-    public LibraryCustomer(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+    LibraryCustomer(String name, String email, LocalDate dateOfBirth, String address1, String address2,
                     String address3, String postCode) {
         this.name = name;
         this.email = email;
@@ -24,6 +24,29 @@ public class LibraryCustomer implements Customer{
         this.customerID = UUID.randomUUID();
         this.address = new String[]{address1, address2, address3, postCode};
         this.itemsBorrowed = new ArrayList<>();
+    }
+
+    @Override
+    public Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String postCode) {
+        return new LibraryCustomerBuilder()
+                .name(name).email(email).dob(dateOfBirth).address1(address1).postCode(postCode).buildCustomer();
+    }
+
+    @Override
+    public Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+                              String postCode) {
+        return new LibraryCustomerBuilder()
+                .name(name).email(email).dob(dateOfBirth).address1(address1).address2(address2).postCode(postCode)
+                .buildCustomer();
+    }
+
+    @Override
+    public Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+                              String address3, String postCode) {
+        return new LibraryCustomerBuilder()
+                .name(name).email(email).dob(dateOfBirth)
+                .address1(address1).address2(address2).address3(address3).postCode(postCode)
+                .buildCustomer();
     }
 
     @Override

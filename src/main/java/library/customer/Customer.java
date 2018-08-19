@@ -9,6 +9,14 @@ import java.util.UUID;
 
 public interface Customer {
 
+    Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String postCode);
+
+    Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+                       String postCode);
+
+    Customer createNew(String name, String email, LocalDate dateOfBirth, String address1, String address2,
+                       String address3, String postCode);
+
     String getName();
 
     void setName(String name);
