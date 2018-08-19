@@ -2,42 +2,40 @@ package library.customer;
 
 import java.time.LocalDate;
 
-class LibraryCustomerBuilder {
+public class LibraryCustomerBuilder {
 
-    private String[] name = new String[2];
+    private String[] name;
     private String email;
-    private LocalDate dateOfBirth = LocalDate.now();
-    private Address address = new Address("","");
+    private LocalDate dateOfBirth;
+    private Address address;
 
-    LibraryCustomer buildCustomer() {
+    public LibraryCustomer buildCustomer() {
         return new LibraryCustomer(name, email, dateOfBirth, address);
     }
 
-    LibraryCustomerBuilder name(String forename, String surname) {
-        this.name[0] = forename;
-        this.name[1] = surname;
+    public LibraryCustomerBuilder name(String forename, String surname) {
+        this.name = new String[]{forename, surname};
         return this;
     }
 
-    LibraryCustomerBuilder email(String email) {
+    public LibraryCustomerBuilder email(String email) {
         this.email = email;
         return this;
     }
 
-    LibraryCustomerBuilder dob(LocalDate dateOfBirth) {
+    public LibraryCustomerBuilder dob(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
         return this;
     }
 
-    LibraryCustomerBuilder address(Address address) {
-        this.address.setStreetAddress(address.getStreetAddress());
+    public LibraryCustomerBuilder address(Address address) {
+        this.address = new Address(address.getStreetAddress(), address.getPostCode());
         if (address.getTown() != null) {
             this.address.setTown(address.getTown());
         }
         if (address.getCounty() != null) {
             this.address.setCounty(address.getCounty());
         }
-        this.address.setPostCode(address.getPostCode());
         return this;
     }
 }
