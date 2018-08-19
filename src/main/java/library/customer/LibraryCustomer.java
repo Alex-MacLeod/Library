@@ -13,16 +13,15 @@ public class LibraryCustomer implements Customer{
     private String email;
     private LocalDate dateOfBirth;
     private final UUID customerID;
-    private String[] address;
+    private Address address;
     private List<Borrowable> itemsBorrowed;
 
-    LibraryCustomer(String name, String email, LocalDate dateOfBirth, String address1, String address2,
-                    String address3, String postCode) {
+    LibraryCustomer(String name, String email, LocalDate dateOfBirth, Address address) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.customerID = UUID.randomUUID();
-        this.address = new String[]{address1, address2, address3, postCode};
+        this.address = address;
         this.itemsBorrowed = new ArrayList<>();
     }
 
@@ -52,13 +51,8 @@ public class LibraryCustomer implements Customer{
     }
 
     @Override
-    public String[] getAddress() {
+    public Address getAddress() {
         return this.address;
-    }
-
-    @Override
-    public void setAddress(String address1, String address2, String address3, String postCode) {
-        this.address = new String[]{address1, address2, address3, postCode};
     }
 
     @Override

@@ -37,10 +37,10 @@ public class CustomerTest {
         assertEquals(1965, newCustomer1.getDateOfBirth().getYear());
         assertEquals(Month.AUGUST, newCustomer1.getDateOfBirth().getMonth());
         assertEquals(19, newCustomer1.getDateOfBirth().getDayOfMonth());
-        assertEquals("141 5th Street", newCustomer1.getAddress()[0]);
-        assertNull(newCustomer1.getAddress()[1]);
-        assertNull(newCustomer1.getAddress()[2]);
-        assertEquals("Z1PC0DE", newCustomer1.getAddress()[3]);
+        assertEquals("141 5th Street", newCustomer1.getAddress().getStreetAddress());
+        assertNull(newCustomer1.getAddress().getTown());
+        assertNull(newCustomer1.getAddress().getCounty());
+        assertEquals("Z1PC0DE", newCustomer1.getAddress().getPostCode());
 
         Customer newCustomer2 = Customer.createNew("Samwise Gamgee", "gardeninglyfe@palantir.net",
                 LocalDate.of(2980, 4, 6), "Bag End",
@@ -51,10 +51,10 @@ public class CustomerTest {
         assertEquals(2980, newCustomer2.getDateOfBirth().getYear());
         assertEquals(Month.APRIL, newCustomer2.getDateOfBirth().getMonth());
         assertEquals(6, newCustomer2.getDateOfBirth().getDayOfMonth());
-        assertEquals("Bag End", newCustomer2.getAddress()[0]);
-        assertEquals("Hobbiton", newCustomer2.getAddress()[1]);
-        assertNull(newCustomer2.getAddress()[2]);
-        assertEquals("HO8 81T", newCustomer2.getAddress()[3]);
+        assertEquals("Bag End", newCustomer2.getAddress().getStreetAddress());
+        assertEquals("Hobbiton", newCustomer2.getAddress().getTown());
+        assertNull(newCustomer2.getAddress().getCounty());
+        assertEquals("HO8 81T", newCustomer2.getAddress().getPostCode());
 
         Customer newCustomer3 = Customer.createNew("Harry Potter", "hpotter@hogwarts.ac.uk",
                 LocalDate.of(1980, 7, 31), "4 Privet Drive",
@@ -65,22 +65,10 @@ public class CustomerTest {
         assertEquals(1980, newCustomer3.getDateOfBirth().getYear());
         assertEquals(Month.JULY, newCustomer3.getDateOfBirth().getMonth());
         assertEquals(31, newCustomer3.getDateOfBirth().getDayOfMonth());
-        assertEquals("4 Privet Drive", newCustomer3.getAddress()[0]);
-        assertEquals("Little Whinging", newCustomer3.getAddress()[1]);
-        assertEquals("Surrey", newCustomer3.getAddress()[2]);
-        assertEquals("W1Z 4RD", newCustomer3.getAddress()[3]);
-    }
-
-    @Test
-    public void setAddressShouldCombineValuesIntoArray() {
-        String address1 = "20 Random Road";
-        String address2 = "Normalford";
-        String address3 = "Genericshire";
-        String postCode = "NW4 T3S";
-        String[] testAddress = {address1, address2, address3, postCode};
-        testCustomer.setAddress(address1, address2, address3, postCode);
-
-        assertArrayEquals(testAddress, testCustomer.getAddress());
+        assertEquals("4 Privet Drive", newCustomer3.getAddress().getStreetAddress());
+        assertEquals("Little Whinging", newCustomer3.getAddress().getTown());
+        assertEquals("Surrey", newCustomer3.getAddress().getCounty());
+        assertEquals("W1Z 4RD", newCustomer3.getAddress().getPostCode());
     }
 
     @Test

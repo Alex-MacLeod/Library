@@ -39,9 +39,7 @@ public interface Customer {
 
     UUID getCustomerID();
 
-    String[] getAddress();
-
-    void setAddress(String address1, String address2, String address3, String postCode);
+    Address getAddress();
 
     List<Borrowable> getItemsBorrowed();
 
