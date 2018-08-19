@@ -32,12 +32,12 @@ public class LibraryCustomer implements Customer {
 
     @Override
     public String[] getName() {
-        return name;
+        return new String[]{this.name[0], this.name[1]};
     }
 
     @Override
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     @Override
