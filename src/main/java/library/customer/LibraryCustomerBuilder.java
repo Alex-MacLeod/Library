@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 class LibraryCustomerBuilder {
 
-    private String name;
+    private String[] name = new String[2];
     private String email;
     private LocalDate dateOfBirth = LocalDate.now();
     private Address address = new Address();
@@ -13,8 +13,9 @@ class LibraryCustomerBuilder {
         return new LibraryCustomer(name, email, dateOfBirth, address);
     }
 
-    LibraryCustomerBuilder name(String name) {
-        this.name = name;
+    LibraryCustomerBuilder name(String forename, String surname) {
+        this.name[0] = forename;
+        this.name[1] = surname;
         return this;
     }
 

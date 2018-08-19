@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class LibraryCustomer implements Customer{
+public class LibraryCustomer implements Customer {
 
-    private String name;
+    private String[] name;
     private String email;
     private LocalDate dateOfBirth;
     private final UUID customerID;
     private Address address;
     private List<Borrowable> itemsBorrowed;
 
-    LibraryCustomer(String name, String email, LocalDate dateOfBirth, Address address) {
+    LibraryCustomer(String[] name, String email, LocalDate dateOfBirth, Address address) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -25,27 +25,27 @@ public class LibraryCustomer implements Customer{
         this.itemsBorrowed = new ArrayList<>();
     }
 
-    static LibraryCustomer createNew(String name, String email, LocalDate dateOfBirth, String streetAddress, String postCode){
+    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
+                                     String streetAddress, String postCode){
         return new LibraryCustomerBuilder()
-                .name(name).email(email).dob(dateOfBirth).address(streetAddress, postCode).buildCustomer();
+                .name(forename, surname).email(email).dob(dob).address(streetAddress, postCode).buildCustomer();
     }
 
-    static LibraryCustomer createNew(String name, String email, LocalDate dateOfBirth, String streetAddress, String town,
-                              String postCode){
+    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
+                                     String streetAddress, String town, String postCode){
         return new LibraryCustomerBuilder()
-                .name(name).email(email).dob(dateOfBirth).address(streetAddress, town, postCode)
-                .buildCustomer();
+                .name(forename, surname).email(email).dob(dob).address(streetAddress, town, postCode).buildCustomer();
     }
 
-    static LibraryCustomer createNew(String name, String email, LocalDate dateOfBirth, String streetAddress, String town,
-                              String county, String postCode){
+    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
+                                     String streetAddress, String town, String county, String postCode){
         return new LibraryCustomerBuilder()
-                .name(name).email(email).dob(dateOfBirth).address(streetAddress, town, county, postCode)
+                .name(forename, surname).email(email).dob(dob).address(streetAddress, town, county, postCode)
                 .buildCustomer();
     }
 
     @Override
-    public String getName() {
+    public String[] getName() {
         return name;
     }
 

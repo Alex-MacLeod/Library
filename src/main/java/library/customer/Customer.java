@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface Customer {
 
-    String getName();
+    String[] getName();
 
     String getEmail();
 
