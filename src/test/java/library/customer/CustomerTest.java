@@ -29,49 +29,21 @@ public class CustomerTest {
 
     @Test
     public void createNewShouldCreateANewCustomer() {
-        Customer newCustomer1 = LibraryCustomer.createNew("John", "Doe", "johndoe@email.com",
-                LocalDate.of(1965, 8, 19), "141 5th Street", "Z1PC0DE");
-        String[] expectedName1 = new String[]{"John", "Doe"};
-
-        assertArrayEquals(expectedName1, newCustomer1.getName());
-        assertEquals("johndoe@email.com", newCustomer1.getEmail());
-        assertEquals(1965, newCustomer1.getDateOfBirth().getYear());
-        assertEquals(Month.AUGUST, newCustomer1.getDateOfBirth().getMonth());
-        assertEquals(19, newCustomer1.getDateOfBirth().getDayOfMonth());
-        assertEquals("141 5th Street", newCustomer1.getAddress().getStreetAddress());
-        assertNull(newCustomer1.getAddress().getTown());
-        assertNull(newCustomer1.getAddress().getCounty());
-        assertEquals("Z1PC0DE", newCustomer1.getAddress().getPostCode());
-
-        Customer newCustomer2 = LibraryCustomer.createNew("Samwise", "Gamgee",
-                "gardeninglyfe@palantir.net", LocalDate.of(2980, 4, 6),
-                "Bag End","Hobbiton","HO8 81T");
-        String[] expectedName2 = new String[]{"Samwise", "Gamgee"};
-
-        assertArrayEquals(expectedName2, newCustomer2.getName());
-        assertEquals("gardeninglyfe@palantir.net", newCustomer2.getEmail());
-        assertEquals(2980, newCustomer2.getDateOfBirth().getYear());
-        assertEquals(Month.APRIL, newCustomer2.getDateOfBirth().getMonth());
-        assertEquals(6, newCustomer2.getDateOfBirth().getDayOfMonth());
-        assertEquals("Bag End", newCustomer2.getAddress().getStreetAddress());
-        assertEquals("Hobbiton", newCustomer2.getAddress().getTown());
-        assertNull(newCustomer2.getAddress().getCounty());
-        assertEquals("HO8 81T", newCustomer2.getAddress().getPostCode());
-
-        Customer newCustomer3 = LibraryCustomer.createNew("Harry", "Potter",
-                "hpotter@hogwarts.ac.uk", LocalDate.of(1980, 7, 31),
-                "4 Privet Drive","Little Whinging","Surrey","W1Z 4RD");
+        Address newCustomerAddress = new Address("4 Privet Drive","Little Whinging",
+                "Surrey","W1Z 4RD");
+        Customer newCustomer = LibraryCustomer.createNew("Harry", "Potter",
+                "hpotter@hogwarts.ac.uk", LocalDate.of(1980, 7, 31), newCustomerAddress);
         String[] expectedName3 = new String[]{"Harry", "Potter"};
 
-        assertArrayEquals(expectedName3, newCustomer3.getName());
-        assertEquals("hpotter@hogwarts.ac.uk", newCustomer3.getEmail());
-        assertEquals(1980, newCustomer3.getDateOfBirth().getYear());
-        assertEquals(Month.JULY, newCustomer3.getDateOfBirth().getMonth());
-        assertEquals(31, newCustomer3.getDateOfBirth().getDayOfMonth());
-        assertEquals("4 Privet Drive", newCustomer3.getAddress().getStreetAddress());
-        assertEquals("Little Whinging", newCustomer3.getAddress().getTown());
-        assertEquals("Surrey", newCustomer3.getAddress().getCounty());
-        assertEquals("W1Z 4RD", newCustomer3.getAddress().getPostCode());
+        assertArrayEquals(expectedName3, newCustomer.getName());
+        assertEquals("hpotter@hogwarts.ac.uk", newCustomer.getEmail());
+        assertEquals(1980, newCustomer.getDateOfBirth().getYear());
+        assertEquals(Month.JULY, newCustomer.getDateOfBirth().getMonth());
+        assertEquals(31, newCustomer.getDateOfBirth().getDayOfMonth());
+        assertEquals("4 Privet Drive", newCustomer.getAddress().getStreetAddress());
+        assertEquals("Little Whinging", newCustomer.getAddress().getTown());
+        assertEquals("Surrey", newCustomer.getAddress().getCounty());
+        assertEquals("W1Z 4RD", newCustomer.getAddress().getPostCode());
     }
 
     @Test

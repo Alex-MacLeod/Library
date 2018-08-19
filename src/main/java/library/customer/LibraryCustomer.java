@@ -25,23 +25,9 @@ public class LibraryCustomer implements Customer {
         this.itemsBorrowed = new ArrayList<>();
     }
 
-    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
-                                     String streetAddress, String postCode){
+    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob, Address address){
         return new LibraryCustomerBuilder()
-                .name(forename, surname).email(email).dob(dob).address(streetAddress, postCode).buildCustomer();
-    }
-
-    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
-                                     String streetAddress, String town, String postCode){
-        return new LibraryCustomerBuilder()
-                .name(forename, surname).email(email).dob(dob).address(streetAddress, town, postCode).buildCustomer();
-    }
-
-    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob,
-                                     String streetAddress, String town, String county, String postCode){
-        return new LibraryCustomerBuilder()
-                .name(forename, surname).email(email).dob(dob).address(streetAddress, town, county, postCode)
-                .buildCustomer();
+                .name(forename, surname).email(email).dob(dob).address(address).buildCustomer();
     }
 
     @Override

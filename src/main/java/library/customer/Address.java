@@ -7,6 +7,24 @@ class Address {
     private String county;
     private String postCode;
 
+    Address(String streetAddress, String postCode) {
+        this.streetAddress = streetAddress;
+        this.postCode = postCode;
+    }
+
+    Address(String streetAddress, String town, String postCode) {
+        this.streetAddress = streetAddress;
+        this.town = town;
+        this.postCode = postCode;
+    }
+
+    Address(String streetAddress, String town, String county, String postCode) {
+        this.streetAddress = streetAddress;
+        this.town = town;
+        this.county = county;
+        this.postCode = postCode;
+    }
+
     String getStreetAddress() {
         return streetAddress;
     }

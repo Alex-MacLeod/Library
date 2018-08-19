@@ -7,7 +7,7 @@ class LibraryCustomerBuilder {
     private String[] name = new String[2];
     private String email;
     private LocalDate dateOfBirth = LocalDate.now();
-    private Address address = new Address();
+    private Address address = new Address("","");
 
     LibraryCustomer buildCustomer() {
         return new LibraryCustomer(name, email, dateOfBirth, address);
@@ -29,24 +29,15 @@ class LibraryCustomerBuilder {
         return this;
     }
 
-    LibraryCustomerBuilder address(String streetAddress, String postCode) {
-        this.address.setStreetAddress(streetAddress);
-        this.address.setPostCode(postCode);
-        return this;
-    }
-
-    LibraryCustomerBuilder address(String streetAddress, String town, String postCode) {
-        this.address.setStreetAddress(streetAddress);
-        this.address.setTown(town);
-        this.address.setPostCode(postCode);
-        return this;
-    }
-
-    LibraryCustomerBuilder address(String streetAddress, String town, String county, String postCode) {
-        this.address.setStreetAddress(streetAddress);
-        this.address.setTown(town);
-        this.address.setCounty(county);
-        this.address.setPostCode(postCode);
+    LibraryCustomerBuilder address(Address address) {
+        this.address.setStreetAddress(address.getStreetAddress());
+        if (address.getTown() != null) {
+            this.address.setTown(address.getTown());
+        }
+        if (address.getCounty() != null) {
+            this.address.setCounty(address.getCounty());
+        }
+        this.address.setPostCode(address.getPostCode());
         return this;
     }
 }
