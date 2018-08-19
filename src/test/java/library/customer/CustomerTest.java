@@ -1,6 +1,5 @@
 package library.customer;
 
-import library.builder.LibraryCustomerBuilder;
 import library.item.Book;
 import library.item.Borrowable;
 import org.junit.Before;
