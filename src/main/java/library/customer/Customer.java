@@ -15,8 +15,6 @@ public interface Customer {
 
     LocalDate getDateOfBirth();
 
-    void setDateOfBirth(LocalDate dateOfBirth);
-
     UUID getCustomerID();
 
     Address getAddress();

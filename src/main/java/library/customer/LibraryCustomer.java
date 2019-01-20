@@ -46,11 +46,6 @@ public class LibraryCustomer implements Customer {
     }
 
     @Override
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    @Override
     public UUID getCustomerID() {
         return this.customerID;
     }
