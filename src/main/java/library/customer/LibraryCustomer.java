@@ -61,6 +61,15 @@ public class LibraryCustomer implements Customer {
     }
 
     @Override
+    public Customer update(String[] name, String email, LocalDate dateOfBirth, Address address) {
+        this.name = name.clone();
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        return this;
+    }
+
+    @Override
     public void borrow(Borrowable item, long loanWeeks) {
         if (!item.isOnLoan()) {
             item.loan(this, loanWeeks);

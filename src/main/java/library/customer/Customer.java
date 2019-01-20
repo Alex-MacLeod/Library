@@ -21,6 +21,8 @@ public interface Customer {
 
     List<Borrowable> getItemsBorrowed();
 
+    Customer update(String[] name, String email, LocalDate dateOfBirth, Address address);
+
     void borrow(Borrowable item, long loanWeeks);
 
     default void borrow(Borrowable item) {
