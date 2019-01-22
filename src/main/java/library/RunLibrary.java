@@ -1,9 +1,12 @@
 package library;
 
-import library.util.Commands;
+import library.command.Command;
 import library.util.Input;
 
 import java.util.Arrays;
+import java.util.List;
+
+import static library.command.Command.commandMap;
 
 public class RunLibrary {
 
@@ -14,33 +17,20 @@ public class RunLibrary {
         do {
             System.out.println("Next command:");
             String commandInput = Input.scan.nextLine();
-            String[] commands = commandInput.split(" ");
-            Commands initialCommand;
+            List<String> commands = Arrays.asList(commandInput.split(" "));
+            Command.Commands initialCommand;
             try {
-                initialCommand = Commands.valueOf(commands[0].toUpperCase());
+                initialCommand = Command.Commands.valueOf(commands.get(0).toUpperCase());
             } catch (IllegalArgumentException ie) {
-                initialCommand = Commands.UNKNOWN;
+                initialCommand = Command.Commands.UNKNOWN;
             }
 
-            switch (initialCommand) {
-                case ADD:
-                case EXIT:
-                    System.out.println("Quitting library system");
-                    isExited = true;
-                    break;
-                case EXTEND:
-                case HELP:
-                    System.out.println("Valid commands: " + Arrays.toString(Commands.values()).toLowerCase());
-                    break;
-                case LOAN:
-                case REMOVE:
-                case RETURN:
-                case UPDATE:
-                default:
-                    System.out.println("Did not recognise command \"" + commands[0] + "\". Use the \"help\" " +
-                            "command to see list of valid commands");
-                    break;
+            commandMap.get(initialCommand).accept(commands);
+
+            if (Command.Commands.EXIT.equals(initialCommand)) {
+                isExited = true;
             }
+
         } while (!isExited);
 
     }
