@@ -19,9 +19,6 @@ public class CustomerTest {
 
     @Before
     public void setUp() {
-        testCustomer = new LibraryCustomerBuilder().name("Joe", "Bloggs").dob(LocalDate.now())
-                .buildCustomer();
-
         testItem1 = new Book("Java 4 Dum-Dums", "Elliot Womack",2017,
                 false, true);
         testItem2 = new Book("Cognitive Psience", "Wakaba Isshiki",2016,
@@ -33,26 +30,27 @@ public class CustomerTest {
         Address newCustomerAddress = new Address("4 Privet Drive","Little Whinging",
                 "Surrey","W1Z 4RD");
 
-        Customer newCustomer = new LibraryCustomerBuilder()
+        testCustomer = new LibraryCustomerBuilder()
                 .name("Harry", "Potter").email("hpotter@hogwarts.ac.uk")
                 .dob(LocalDate.of(1980, 7, 31)).address(newCustomerAddress)
                 .buildCustomer();
 
         String[] expectedName3 = new String[]{"Harry", "Potter"};
 
-        assertArrayEquals(expectedName3, newCustomer.getName());
-        assertEquals("hpotter@hogwarts.ac.uk", newCustomer.getEmail());
-        assertEquals(1980, newCustomer.getDateOfBirth().getYear());
-        assertEquals(Month.JULY, newCustomer.getDateOfBirth().getMonth());
-        assertEquals(31, newCustomer.getDateOfBirth().getDayOfMonth());
-        assertEquals("4 Privet Drive", newCustomer.getAddress().getStreetAddress());
-        assertEquals("Little Whinging", newCustomer.getAddress().getTown());
-        assertEquals("Surrey", newCustomer.getAddress().getCounty());
-        assertEquals("W1Z 4RD", newCustomer.getAddress().getPostCode());
+        assertArrayEquals(expectedName3, testCustomer.getName());
+        assertEquals("hpotter@hogwarts.ac.uk", testCustomer.getEmail());
+        assertEquals(1980, testCustomer.getDateOfBirth().getYear());
+        assertEquals(Month.JULY, testCustomer.getDateOfBirth().getMonth());
+        assertEquals(31, testCustomer.getDateOfBirth().getDayOfMonth());
+        assertEquals("4 Privet Drive", testCustomer.getAddress().getStreetAddress());
+        assertEquals("Little Whinging", testCustomer.getAddress().getTown());
+        assertEquals("Surrey", testCustomer.getAddress().getCounty());
+        assertEquals("W1Z 4RD", testCustomer.getAddress().getPostCode());
     }
 
     @Test
     public void borrowShouldAddItemToItemsBorrowedOnlyIfNotOnLoan() {
+        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
@@ -64,6 +62,7 @@ public class CustomerTest {
 
     @Test
     public void borrowShouldNotAddItemToItemsBorrowedIfItemRejectsLoan() {
+        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem1);
 
         assertEquals(0, testCustomer.getItemsBorrowed().size());
@@ -71,7 +70,7 @@ public class CustomerTest {
 
     @Test
     public void returnItemShouldRemoveItemFromItemsBorrowedIfCustomerHasBorrowedIt() {
-        testCustomer.setDateOfBirth(LocalDate.of(1990,1,1));
+        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.of(1990,1,1)).buildCustomer();
 
         testCustomer.borrow(testItem1);
         testCustomer.borrow(testItem2);
@@ -85,6 +84,7 @@ public class CustomerTest {
 
     @Test
     public void returnItemShouldNotRemoveItemFromItemsBorrowedIfCustomerHasNotBorrowedIt() {
+        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class LibraryCustomer implements Customer {
+class LibraryCustomer implements Customer {
 
     private String[] name;
     private String email;
@@ -25,14 +25,9 @@ public class LibraryCustomer implements Customer {
         this.itemsBorrowed = new ArrayList<>();
     }
 
-    static LibraryCustomer createNew(String forename, String surname, String email, LocalDate dob, Address address){
-        return new LibraryCustomerBuilder()
-                .name(forename, surname).email(email).dob(dob).address(address).buildCustomer();
-    }
-
     @Override
     public String[] getName() {
-        return new String[]{this.name[0], this.name[1]};
+        return this.name.clone();
     }
 
     @Override
@@ -83,13 +78,17 @@ public class LibraryCustomer implements Customer {
 
     @Override
     public void returnToLibrary(UUID itemID) {
-        for (Borrowable item : this.itemsBorrowed) {
-            if (itemID.equals(item.getID())) {
-                itemsBorrowed.remove(item);
-                item.returnFromLoan();
-                break;
-            } else {
-                System.out.println("Customer has not borrowed this item, so cannot return it");
+        if (this.itemsBorrowed.isEmpty()) {
+            System.out.println("Customer has not borrowed any books");
+        } else {
+            for (Borrowable item : this.itemsBorrowed) {
+                if (itemID.equals(item.getID())) {
+                    itemsBorrowed.remove(item);
+                    item.returnFromLoan();
+                    break;
+                } else {
+                    System.out.println("Customer has not borrowed this item, so cannot return it");
+                }
             }
         }
     }
