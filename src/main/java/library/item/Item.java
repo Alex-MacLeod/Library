@@ -1,12 +1,21 @@
 package library.item;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Book.class),
+        @JsonSubTypes.Type(value = Magazine.class),
+        @JsonSubTypes.Type(value = PublicRecord.class),
+})
 public abstract class Item {
 
     private String name;
-    private final UUID iD;
+    private final UUID id;
     private String author;
     private int yearPublished;
     boolean onLoan;
@@ -14,7 +23,7 @@ public abstract class Item {
 
     Item (String name, String author, int year) {
         this.name = name;
-        this.iD = UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.author = author;
         this.yearPublished = year;
         this.onLoan = false;
@@ -30,7 +39,7 @@ public abstract class Item {
     }
 
     public UUID getID() {
-        return iD;
+        return id;
     }
 
     public String getAuthor() {

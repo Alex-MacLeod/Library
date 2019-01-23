@@ -1,16 +1,25 @@
 package library.item;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import library.constant.Constant;
 import library.customer.Customer;
 
 import java.time.LocalDate;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book extends Item implements Borrowable {
 
     private final boolean isFiction;
     private final boolean isForKids;
 
-    public Book(String name, String author, int yearPublished, boolean isFiction, boolean isForKids) {
+    @JsonCreator
+    public Book(@JsonProperty("name")String name,
+                @JsonProperty("author")String author,
+                @JsonProperty("yearPublished")int yearPublished,
+                @JsonProperty("isFiction")boolean isFiction,
+                @JsonProperty("isForKids")boolean isForKids) {
         super(name, author, yearPublished);
         this.isFiction = isFiction;
         this.isForKids = isForKids;

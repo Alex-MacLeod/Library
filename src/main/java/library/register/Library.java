@@ -1,16 +1,33 @@
 package library.register;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import library.item.Item;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Library {
 
-    private static List<Item> itemsLibrary = new ArrayList<>();
+    private static volatile List<Item> itemsLibrary;
 
     public static List<Item> getLibrary() {
+        if (itemsLibrary == null) {
+            synchronized (Library.class) {
+                if(itemsLibrary == null){
+                    ObjectMapper mapper = new ObjectMapper();
+                    try (InputStream is = Library.class.getResourceAsStream("/library.json");) {
+                        itemsLibrary = mapper.readValue(is, new TypeReference<List<Item>>() {});
+                        System.out.println("Library initialised"); // debug
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
         return itemsLibrary;
     }
 

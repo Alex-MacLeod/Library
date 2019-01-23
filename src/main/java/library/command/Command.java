@@ -1,6 +1,11 @@
 package library.command;
 
-import java.util.Arrays;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import library.item.Item;
+import library.register.Library;
+
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
@@ -9,8 +14,10 @@ import java.util.function.Consumer;
 
 public class Command {
 
+    private static List<Item> library;
+
     public enum Commands {
-        ADD, EXIT, EXTEND, HELP, LOAN, REMOVE, RETURN, UNKNOWN, UPDATE
+        ADD, EXIT, EXTEND, HELP, LOAN, OUTPUT, REMOVE, RETURN, UNKNOWN, UPDATE
     }
 
     public static final Map<Commands, Consumer<List<String>>> commandMap;
@@ -22,6 +29,7 @@ public class Command {
         dummy.put(Commands.EXTEND, Command::executeExtend);
         dummy.put(Commands.HELP, Command::executeHelp);
         dummy.put(Commands.LOAN, Command::executeLoan);
+        dummy.put(Commands.OUTPUT, Command::executeOutput);
         dummy.put(Commands.REMOVE, Command::executeRemove);
         dummy.put(Commands.RETURN, Command::executeReturn);
         dummy.put(Commands.UNKNOWN, Command::executeUnknown);
@@ -54,6 +62,23 @@ public class Command {
 
     private static void executeLoan(List<String> commands) {
         throw new UnsupportedOperationException();
+    }
+
+    private static void executeOutput(List<String> commands) {
+        if ("library".equals(commands.get(1))) {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+
+            library = Library.getLibrary();
+
+            library.parallelStream().forEach(item -> {
+                try {
+                    System.out.println(mapper.writeValueAsString(item));
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     private static void executeRemove(List<String> commands) {
