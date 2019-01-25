@@ -3,7 +3,7 @@ package library.customer;
 class Address {
 
     private String streetAddress;
-    private String town;
+    private String place;
     private String county;
     private String postCode;
 
@@ -12,15 +12,15 @@ class Address {
         this.postCode = postCode;
     }
 
-    Address(String streetAddress, String town, String postCode) {
+    Address(String streetAddress, String place, String postCode) {
         this.streetAddress = streetAddress;
-        this.town = town;
+        this.place = place;
         this.postCode = postCode;
     }
 
     Address(String streetAddress, String town, String county, String postCode) {
         this.streetAddress = streetAddress;
-        this.town = town;
+        this.place = place;
         this.county = county;
         this.postCode = postCode;
     }
@@ -33,12 +33,12 @@ class Address {
         this.streetAddress = streetAddress;
     }
 
-    String getTown() {
-        return town;
+    public String getPlace() {
+        return place;
     }
 
-    void setTown(String town) {
-        this.town = town;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     String getCounty() {

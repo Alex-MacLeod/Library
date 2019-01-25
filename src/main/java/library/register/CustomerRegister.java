@@ -16,7 +16,7 @@ public class CustomerRegistry {
 
     public static Customer find(UUID customerID) {
         for (Customer customer : customerList) {
-            if (customerID.equals(customer.getCustomerID())){
+            if (customerID.equals(customer.getId())){
                 return customer;
             }
         }

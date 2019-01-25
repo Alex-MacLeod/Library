@@ -13,7 +13,8 @@ public class Customer {
     private String[] name;
     private String email;
     private LocalDate dateOfBirth;
-    private final UUID customerID;
+
+    private final UUID id;
     private Address address;
     private List<Borrowable> itemsBorrowed;
 
@@ -21,7 +22,7 @@ public class Customer {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.customerID = UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.address = address;
         this.itemsBorrowed = new ArrayList<>();
     }
@@ -38,8 +39,8 @@ public class Customer {
         return this.dateOfBirth;
     }
 
-    public UUID getCustomerID() {
-        return this.customerID;
+    public UUID getId() {
+        return this.id;
     }
 
     public Address getAddress() {

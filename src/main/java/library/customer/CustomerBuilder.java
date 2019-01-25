@@ -30,8 +30,8 @@ public class CustomerBuilder {
 
     public CustomerBuilder address(Address address) {
         this.address = new Address(address.getStreetAddress(), address.getPostCode());
-        if (address.getTown() != null) {
-            this.address.setTown(address.getTown());
+        if (address.getPlace() != null) {
+            this.address.setPlace(address.getPlace());
         }
         if (address.getCounty() != null) {
             this.address.setCounty(address.getCounty());
