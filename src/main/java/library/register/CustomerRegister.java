@@ -1,11 +1,8 @@
 package library.register;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import library.customer.Customer;
+import library.util.JSONConverter;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,13 +14,7 @@ public class CustomerRegister {
         if (customerList == null) {
             synchronized (CustomerRegister.class) {
                 if(customerList == null){
-                    ObjectMapper mapper = new ObjectMapper();
-                    try (InputStream is = CustomerRegister.class.getResourceAsStream("/customers.json")) {
-                        customerList = mapper.readValue(is, new TypeReference<List<Customer>>() {});
-                        System.out.println("Customer register initialised"); // debug
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    customerList = JSONConverter.readJsonList("/customers.json", Customer.class);
                 }
             }
         }
