@@ -3,7 +3,9 @@ package library.command;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import library.customer.Customer;
 import library.item.Item;
+import library.register.CustomerRegister;
 import library.register.Library;
 
 import java.util.Collections;
@@ -15,6 +17,7 @@ import java.util.function.Consumer;
 public class Command {
 
     private static List<Item> library;
+    private static List<Customer> register;
 
     public enum Commands {
         ADD, EXIT, EXTEND, HELP, LOAN, OUTPUT, REMOVE, RETURN, UNKNOWN, UPDATE
@@ -74,6 +77,20 @@ public class Command {
             library.parallelStream().forEach(item -> {
                 try {
                     System.out.println(mapper.writeValueAsString(item));
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        if ("customers".equals(commands.get(1))) {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+
+            register = CustomerRegister.getRegister();
+
+            register.parallelStream().forEach(customer -> {
+                try {
+                    System.out.println(mapper.writeValueAsString(customer));
                 } catch (JsonProcessingException e) {
                     e.printStackTrace();
                 }

@@ -1,5 +1,10 @@
 package library.customer;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 class Address {
 
     private String streetAddress;
@@ -18,18 +23,22 @@ class Address {
         this.postCode = postCode;
     }
 
-    Address(String streetAddress, String town, String county, String postCode) {
+    @JsonCreator
+    Address(@JsonProperty("streetAddress")String streetAddress,
+            @JsonProperty("place")String place,
+            @JsonProperty("county")String county,
+            @JsonProperty("postCode")String postCode) {
         this.streetAddress = streetAddress;
         this.place = place;
         this.county = county;
         this.postCode = postCode;
     }
 
-    String getStreetAddress() {
+    public String getStreetAddress() {
         return streetAddress;
     }
 
-    void setStreetAddress(String streetAddress) {
+    public void setStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
     }
 
@@ -41,19 +50,19 @@ class Address {
         this.place = place;
     }
 
-    String getCounty() {
+    public String getCounty() {
         return county;
     }
 
-    void setCounty(String county) {
+    public void setCounty(String county) {
         this.county = county;
     }
 
-    String getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    void setPostCode(String postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 }

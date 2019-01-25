@@ -1,16 +1,32 @@
 package library.register;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import library.customer.Customer;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.UUID;
 
-public class CustomerRegistry {
+public class CustomerRegister {
 
-    private static List<Customer> customerList =  new ArrayList<>();
+    private static volatile List<Customer> customerList;
 
     public static List<Customer> getRegister() {
+        if (customerList == null) {
+            synchronized (CustomerRegister.class) {
+                if(customerList == null){
+                    ObjectMapper mapper = new ObjectMapper();
+                    try (InputStream is = CustomerRegister.class.getResourceAsStream("/customers.json")) {
+                        customerList = mapper.readValue(is, new TypeReference<List<Customer>>() {});
+                        System.out.println("Customer register initialised"); // debug
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
         return customerList;
     }
 
@@ -33,6 +49,6 @@ public class CustomerRegistry {
         return foundCustomers;
     }
 
-    private CustomerRegistry() {
+    private CustomerRegister() {
     }
 }
