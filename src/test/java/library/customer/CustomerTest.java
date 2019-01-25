@@ -30,9 +30,11 @@ public class CustomerTest {
         Address newCustomerAddress = new Address("4 Privet Drive","Little Whinging",
                 "Surrey","W1Z 4RD");
 
-        testCustomer = new LibraryCustomerBuilder()
-                .name("Harry", "Potter").email("hpotter@hogwarts.ac.uk")
-                .dob(LocalDate.of(1980, 7, 31)).address(newCustomerAddress)
+        testCustomer = new CustomerBuilder()
+                .name("Harry", "Potter")
+                .email("hpotter@hogwarts.ac.uk")
+                .dob(LocalDate.of(1980, 7, 31))
+                .address(newCustomerAddress)
                 .buildCustomer();
 
         String[] expectedName3 = new String[]{"Harry", "Potter"};
@@ -50,19 +52,19 @@ public class CustomerTest {
 
     @Test
     public void borrowShouldAddItemToItemsBorrowedOnlyIfNotOnLoan() {
-        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
+        testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
 
-        testCustomer.borrow(testItem2, 6);
+        testCustomer.borrow(testItem2, 6L);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
     }
 
     @Test
     public void borrowShouldNotAddItemToItemsBorrowedIfItemRejectsLoan() {
-        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
+        testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem1);
 
         assertEquals(0, testCustomer.getItemsBorrowed().size());
@@ -70,7 +72,7 @@ public class CustomerTest {
 
     @Test
     public void returnItemShouldRemoveItemFromItemsBorrowedIfCustomerHasBorrowedIt() {
-        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.of(1990,1,1)).buildCustomer();
+        testCustomer = new CustomerBuilder().dob(LocalDate.of(1990,1,1)).buildCustomer();
 
         testCustomer.borrow(testItem1);
         testCustomer.borrow(testItem2);
@@ -84,7 +86,7 @@ public class CustomerTest {
 
     @Test
     public void returnItemShouldNotRemoveItemFromItemsBorrowedIfCustomerHasNotBorrowedIt() {
-        testCustomer = new LibraryCustomerBuilder().dob(LocalDate.now()).buildCustomer();
+        testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
