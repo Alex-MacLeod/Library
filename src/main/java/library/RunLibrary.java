@@ -33,5 +33,7 @@ public class RunLibrary {
 
         } while (!isExited);
 
+        Input.scan.close();
+
     }
 }
