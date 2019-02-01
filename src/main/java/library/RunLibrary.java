@@ -1,16 +1,17 @@
 package library;
 
-import library.command.Command;
+import library.util.Command;
+import library.service.LibraryService;
 import library.util.Input;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static library.command.Command.commandMap;
-
 public class RunLibrary {
 
     public static void main(String[] args) {
+
+        LibraryService libraryService = new LibraryService();
 
         boolean isExited = false;
 
@@ -18,16 +19,16 @@ public class RunLibrary {
             System.out.println("Next command:");
             String commandInput = Input.scan.nextLine();
             List<String> commands = Arrays.asList(commandInput.split(" "));
-            Command.Commands initialCommand;
+            Command initialCommand;
             try {
-                initialCommand = Command.Commands.valueOf(commands.get(0).toUpperCase());
+                initialCommand = Command.valueOf(commands.get(0).toUpperCase());
             } catch (IllegalArgumentException ie) {
-                initialCommand = Command.Commands.UNKNOWN;
+                initialCommand = Command.UNKNOWN;
             }
 
-            commandMap.get(initialCommand).accept(commands);
+            libraryService.commandMap().get(initialCommand).accept(commands);
 
-            if (Command.Commands.EXIT.equals(initialCommand)) {
+            if (Command.EXIT.equals(initialCommand)) {
                 isExited = true;
             }
 

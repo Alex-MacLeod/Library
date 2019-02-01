@@ -1,4 +1,4 @@
-package library.constant;
+package library.util;
 
 public final class Constant {
 

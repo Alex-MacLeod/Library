@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import library.constant.Constant;
+import library.util.Constant;
 import library.item.Borrowable;
 import library.util.LocalDateDeserializer;
 import library.util.LocalDateSerializer;

@@ -1,6 +1,6 @@
 package library.item;
 
-import library.constant.Constant;
+import library.util.Constant;
 import library.customer.Customer;
 
 import java.time.LocalDate;

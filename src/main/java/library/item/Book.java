@@ -3,7 +3,7 @@ package library.item;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import library.constant.Constant;
+import library.util.Constant;
 import library.customer.Customer;
 
 import java.time.LocalDate;
