@@ -9,17 +9,20 @@ import java.util.UUID;
 
 public class Library {
 
+    private static final Object mutex = new Object();
     private static volatile List<Item> itemsLibrary;
 
     public static List<Item> getLibrary() {
-        if (itemsLibrary == null) {
-            synchronized (Library.class) {
-                if(itemsLibrary == null){
-                    itemsLibrary = JSONConverter.readJsonList("/library.json", Item.class);
+        List<Item> result = itemsLibrary;
+        if (result == null) {
+            synchronized (mutex) {
+                result = itemsLibrary;
+                if(result == null){
+                    itemsLibrary = result = JSONConverter.readJsonList("/library.json", Item.class);
                 }
             }
         }
-        return itemsLibrary;
+        return result;
     }
 
     public static Item find(UUID itemID) {

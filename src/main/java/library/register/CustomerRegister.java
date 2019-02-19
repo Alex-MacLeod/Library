@@ -3,22 +3,26 @@ package library.register;
 import library.customer.Customer;
 import library.util.JSONConverter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class CustomerRegister {
 
+    private static final Object mutex = new Object();
     private static volatile List<Customer> customerList;
 
     public static List<Customer> getRegister() {
-        if (customerList == null) {
-            synchronized (CustomerRegister.class) {
-                if(customerList == null){
-                    customerList = JSONConverter.readJsonList("/customers.json", Customer.class);
+        List<Customer> result = customerList;
+        if (result == null) {
+            synchronized (mutex) {
+                result = customerList;
+                if(result == null){
+                    customerList = result = JSONConverter.readJsonList("/customers.json", Customer.class);
                 }
             }
         }
-        return customerList;
+        return result;
     }
 
     public static Customer find(UUID customerID) {
