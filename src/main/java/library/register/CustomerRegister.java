@@ -5,6 +5,7 @@ import library.util.JSONConverter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class CustomerRegister {
@@ -25,19 +26,19 @@ public class CustomerRegister {
         return result;
     }
 
-    public static Customer find(UUID customerID) {
-        for (Customer customer : customerList) {
+    public static Optional<Customer> find(UUID customerID) {
+        for (Customer customer : getRegister()) {
             if (customerID.equals(customer.getId())){
-                return customer;
+                return Optional.of(customer);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public static List<Customer> find(String name) {
         List<Customer> foundCustomers = new ArrayList<>();
-        for (Customer customer : customerList) {
-            if (name.equals(customer.getName())) {
+        for (Customer customer : getRegister()) {
+            if (name.equals(customer.getName()[1])) {
                 foundCustomers.add(customer);
             }
         }

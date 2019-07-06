@@ -5,6 +5,7 @@ import library.util.JSONConverter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class Library {
@@ -25,18 +26,18 @@ public class Library {
         return result;
     }
 
-    public static Item find(UUID itemID) {
-        for (Item item : itemsLibrary) {
+    public static Optional<Item> find(UUID itemID) {
+        for (Item item : getLibrary()) {
             if (itemID.equals(item.getID())){
-                return item;
+                return Optional.of(item);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public static List<Item> find(String name) {
         List<Item> foundItems = new ArrayList<>();
-        for (Item item : itemsLibrary) {
+        for (Item item : getLibrary()) {
             if (name.equals(item.getName())) {
                 foundItems.add(item);
             }

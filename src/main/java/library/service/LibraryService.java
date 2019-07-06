@@ -6,6 +6,7 @@ import library.item.Borrowable;
 import library.item.Item;
 import library.register.CustomerRegister;
 import library.register.Library;
+import library.util.Constant;
 import library.util.JSONConverter;
 
 import java.io.IOException;
@@ -66,8 +67,8 @@ public class LibraryService {
         if (item instanceof Borrowable) {
             customer.borrow((Borrowable) item);
             try {
-                JSONConverter.writeJson(CustomerRegister.getRegister(), "/customers1.json");
-                JSONConverter.writeJson(Library.getLibrary(), "/library1.json");
+                JSONConverter.writeJson(CustomerRegister.getRegister(), Constant.CUSTOMER_FILE);
+                JSONConverter.writeJson(Library.getLibrary(), Constant.LIBRARY_FILE);
             } catch (IOException e){
                 e.printStackTrace();
             }
