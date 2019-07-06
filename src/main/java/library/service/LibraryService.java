@@ -28,7 +28,6 @@ public class LibraryService {
         dummy.put(Command.OUTPUT, this::executeOutput);
         dummy.put(Command.REMOVE, this::executeRemove);
         dummy.put(Command.RETURN, this::executeReturn);
-        dummy.put(Command.UNKNOWN, this::executeUnknown);
         dummy.put(Command.UPDATE, this::executeUpdate);
 
         return Collections.unmodifiableMap(dummy);
@@ -96,11 +95,6 @@ public class LibraryService {
 
     private void executeReturn(List<String> commands) {
         throw new UnsupportedOperationException();
-    }
-
-    private void executeUnknown(List<String> commands) {
-        System.out.println("Did not recognise command \"" + commands.get(0) + "\". Use the \"help\" " +
-                "command to see list of valid commands");
     }
 
     private void executeUpdate(List<String> commands) {
