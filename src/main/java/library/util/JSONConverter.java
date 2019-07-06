@@ -17,7 +17,7 @@ public class JSONConverter {
     private static ObjectMapper mapper = new ObjectMapper()
             .configure(SerializationFeature.INDENT_OUTPUT, true);
 
-    public <T> T readJson(String jsonPath, Class<T> clazz) {
+    public <T> T readJson(String jsonPath, Class<? extends T> clazz) {
         T json = null;
         try (InputStream in = JSONConverter.class.getResourceAsStream(jsonPath)){
             json = mapper.readValue(in, clazz);
@@ -27,7 +27,7 @@ public class JSONConverter {
         return json;
     }
 
-    public static <T> List<T> readJsonList(String jsonPath, Class<T> clazz){
+    public static <T> List<T> readJsonList(String jsonPath, Class<? extends T> clazz){
         CollectionType listType = mapper.getTypeFactory()
                 .constructCollectionType(ArrayList.class, clazz);
         List<T> jsonList = null;
