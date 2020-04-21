@@ -1,7 +1,7 @@
 package library;
 
-import library.util.Command;
-import library.service.LibraryService;
+import library.commands.LibraryCommand;
+import library.commands.LibraryCommand.Command;
 import library.util.Input;
 
 import java.util.Arrays;
@@ -10,8 +10,6 @@ import java.util.List;
 public class RunLibrary {
 
     public static void main(String[] args) {
-
-        LibraryService libraryService = new LibraryService();
 
         boolean isExited = false;
 
@@ -28,7 +26,7 @@ public class RunLibrary {
                 continue;
             }
 
-            libraryService.commandMap().get(initialCommand).accept(commands);
+            LibraryCommand.execute(initialCommand, commands);
 
             if (Command.EXIT.equals(initialCommand)) {
                 isExited = true;
@@ -37,6 +35,5 @@ public class RunLibrary {
         } while (!isExited);
 
         Input.scan.close();
-
     }
 }
