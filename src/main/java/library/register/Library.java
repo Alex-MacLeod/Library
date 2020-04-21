@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Library {
 
     private static final Object mutex = new Object();
-    private static volatile List<Item> itemsLibrary;
+    private static List<Item> itemsLibrary;
 
     public static List<Item> getLibrary() {
         List<Item> result = itemsLibrary;
