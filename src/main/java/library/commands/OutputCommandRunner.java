@@ -6,11 +6,11 @@ import library.util.JSONConverter;
 
 import java.util.List;
 
-public class OutputCommand implements LibraryCommand {
+public class OutputCommandRunner implements LibraryCommandRunner {
 
     private final List<String> commandStrings;
 
-    public OutputCommand(List<String> commandStrings) {
+    public OutputCommandRunner(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

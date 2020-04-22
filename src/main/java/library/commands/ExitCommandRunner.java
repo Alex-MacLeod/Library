@@ -1,6 +1,6 @@
 package library.commands;
 
-public class ExitCommand implements LibraryCommand{
+public class ExitCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {

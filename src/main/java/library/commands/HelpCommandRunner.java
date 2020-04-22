@@ -1,6 +1,6 @@
 package library.commands;
 
-public class HelpCommand implements LibraryCommand{
+public class HelpCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {

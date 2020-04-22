@@ -12,11 +12,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-public class LoanCommand implements LibraryCommand {
+public class LoanCommandRunner implements LibraryCommandRunner {
 
     private final List<String> commandStrings;
 
-    public LoanCommand(List<String> commandStrings) {
+    public LoanCommandRunner(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 
