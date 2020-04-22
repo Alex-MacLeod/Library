@@ -1,4 +1,6 @@
-package library.commands;
+package library.commandrunner.help;
+
+import library.commandrunner.LibraryCommandRunner;
 
 public class HelpCommandRunner implements LibraryCommandRunner {
 

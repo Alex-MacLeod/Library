@@ -1,12 +1,14 @@
-package library.commands;
+package library.commandrunner.update;
+
+import library.commandrunner.LibraryCommandRunner;
 
 import java.util.List;
 
-public class RemoveCommandRunner implements LibraryCommandRunner {
+public class UpdateCommandRunner implements LibraryCommandRunner {
 
     private final List<String> commandStrings;
 
-    public RemoveCommandRunner(List<String> commandStrings) {
+    public UpdateCommandRunner(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

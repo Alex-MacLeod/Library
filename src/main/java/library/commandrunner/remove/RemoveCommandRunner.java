@@ -1,12 +1,14 @@
-package library.commands;
+package library.commandrunner.remove;
+
+import library.commandrunner.LibraryCommandRunner;
 
 import java.util.List;
 
-public class ExtendCommandRunner implements LibraryCommandRunner {
+public class RemoveCommandRunner implements LibraryCommandRunner {
 
     private final List<String> commandStrings;
 
-    public ExtendCommandRunner(List<String> commandStrings) {
+    public RemoveCommandRunner(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

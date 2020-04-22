@@ -1,4 +1,6 @@
-package library.commands;
+package library.commandrunner.exit;
+
+import library.commandrunner.LibraryCommandRunner;
 
 public class ExitCommandRunner implements LibraryCommandRunner {
 

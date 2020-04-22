@@ -1,7 +1,7 @@
 package library;
 
-import library.commands.LibraryCommandRunner;
-import library.commands.LibraryCommandRunner.Command;
+import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommandRunner.Command;
 import library.util.Input;
 
 import java.util.Arrays;
