@@ -21,7 +21,7 @@ public interface LibraryCommandRunner extends Runnable {
             case EXTEND -> new ExtendCommandRunner(commandStrings);
             case HELP -> new HelpCommandRunner();
             case LOAN -> new LoanCommandRunner(commandStrings);
-            case OUTPUT -> new OutputCommandRunner(commandStrings);
+            case OUTPUT -> OutputCommandRunnerFactory.getOutputCommandRunner(commandStrings);
             case REMOVE -> new RemoveCommandRunner(commandStrings);
             case RETURN -> new ReturnCommandRunner(commandStrings);
             case UPDATE -> new UpdateCommandRunner(commandStrings);
