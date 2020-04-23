@@ -14,6 +14,9 @@ import java.util.List;
 
 public interface LibraryCommandRunner extends Runnable {
 
+    // TODO: Create tests
+    // TODO: Implement thread executor to run commands
+
     static void run(Command mainCommand, List<String> commandStrings) {
         LibraryCommandRunner command = switch (mainCommand) {
             case ADD -> new AddCommandRunner(commandStrings);

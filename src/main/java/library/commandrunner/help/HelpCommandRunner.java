@@ -4,6 +4,8 @@ import library.commandrunner.LibraryCommandRunner;
 
 public class HelpCommandRunner implements LibraryCommandRunner {
 
+    // TODO: expand options
+
     @Override
     public void run() {
         StringBuilder sb = new StringBuilder();
