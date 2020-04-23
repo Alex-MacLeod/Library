@@ -2,13 +2,15 @@ package library.customer;
 
 import library.item.Book;
 import library.item.Borrowable;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerTest {
 
@@ -17,7 +19,7 @@ public class CustomerTest {
     private Borrowable testItem1;
     private Borrowable testItem2;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         testItem1 = new Book("Java 4 Dum-Dums", "Elliot Womack",2017,
                 false, true);
