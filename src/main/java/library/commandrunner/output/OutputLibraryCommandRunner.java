@@ -2,15 +2,21 @@ package library.commandrunner.output;
 
 import library.item.Item;
 import library.register.Library;
-import library.util.JSONConverter;
+import library.writer.OutputWriter;
 
 import java.util.List;
 
 class OutputLibraryCommandRunner implements OutputCommandRunner {
 
+    private final OutputWriter writer;
+
+    public OutputLibraryCommandRunner(OutputWriter outputWriter) {
+        this.writer = outputWriter;
+    }
+
     @Override
     public void run() {
         List<Item> list = Library.getLibrary();
-        JSONConverter.outputJson(list);
+        writer.output(list);
     }
 }
