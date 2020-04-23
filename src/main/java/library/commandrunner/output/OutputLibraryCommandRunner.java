@@ -1,22 +1,18 @@
 package library.commandrunner.output;
 
-import library.item.Item;
 import library.register.Library;
 import library.writer.OutputWriter;
 
-import java.util.List;
+class OutputLibraryCommandRunner extends OutputCommandRunner {
 
-class OutputLibraryCommandRunner implements OutputCommandRunner {
-
-    private final OutputWriter writer;
+    // TODO: Create tests
 
     public OutputLibraryCommandRunner(OutputWriter outputWriter) {
-        this.writer = outputWriter;
+        super(outputWriter);
     }
 
     @Override
-    public void run() {
-        List<Item> list = Library.getLibrary();
-        writer.output(list);
+    Object getData() {
+        return Library.getLibrary();
     }
 }
