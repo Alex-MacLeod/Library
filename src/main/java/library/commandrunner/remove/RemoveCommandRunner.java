@@ -14,6 +14,6 @@ public class RemoveCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("'Remove' command not yet implemented");
     }
 }

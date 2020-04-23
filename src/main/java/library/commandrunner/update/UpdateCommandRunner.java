@@ -14,6 +14,6 @@ public class UpdateCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("'Update' command not yet implemented");
     }
 }

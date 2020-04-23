@@ -28,7 +28,7 @@ public class OutputCommandRunnerFactory {
         } else if ("customers".equals(dataTypeToBeOutputted)) {
             return new OutputCustomersCommandRunner(writer);
         } else {
-            return new OutputInvalidCommandRunner(dataTypeToBeOutputted);
+            throw new IllegalArgumentException("Did not recognise '" + dataTypeToBeOutputted + "' as a valid data type to be outputted");
         }
     }
 }

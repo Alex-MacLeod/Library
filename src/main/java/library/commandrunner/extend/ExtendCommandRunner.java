@@ -14,6 +14,6 @@ public class ExtendCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("'Extend' command not yet implemented");
     }
 }

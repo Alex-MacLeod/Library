@@ -39,7 +39,7 @@ public class LoanCommandRunner implements LibraryCommandRunner {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Cannot borrow this item");
+            throw new IllegalArgumentException("Cannot borrow this item");
         }
     }
 }

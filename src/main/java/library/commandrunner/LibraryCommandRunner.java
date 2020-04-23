@@ -26,7 +26,14 @@ public interface LibraryCommandRunner extends Runnable {
             case RETURN -> new ReturnCommandRunner(commandStrings);
             case UPDATE -> new UpdateCommandRunner(commandStrings);
         };
-        command.run();
+        try {
+            command.run();
+        } catch (IllegalArgumentException | UnsupportedOperationException continueException) {
+            System.err.println(continueException.getMessage());
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            throw exception;
+        }
     }
 
     enum Command {

@@ -14,6 +14,6 @@ public class AddCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("'Add' command not yet implemented");
     }
 }

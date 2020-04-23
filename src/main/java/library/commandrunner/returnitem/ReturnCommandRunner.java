@@ -14,6 +14,6 @@ public class ReturnCommandRunner implements LibraryCommandRunner {
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("'Return' command not yet implemented");
     }
 }
