@@ -1,4 +1,4 @@
-package library.writer;
+package library.commandrunner.io.writer;
 
 import library.util.JSONConverter;
 

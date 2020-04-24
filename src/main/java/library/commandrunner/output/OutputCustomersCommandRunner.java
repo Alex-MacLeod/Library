@@ -1,7 +1,7 @@
 package library.commandrunner.output;
 
 import library.register.CustomerRegister;
-import library.writer.OutputWriter;
+import library.commandrunner.io.writer.OutputWriter;
 
 class OutputCustomersCommandRunner extends OutputCommandRunner {
 
