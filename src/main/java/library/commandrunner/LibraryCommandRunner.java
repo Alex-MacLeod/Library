@@ -1,6 +1,7 @@
 package library.commandrunner;
 
 import library.commandrunner.add.AddCommandRunner;
+import library.commandrunner.add.AddCommandRunnerFactory;
 import library.commandrunner.exit.ExitCommandRunner;
 import library.commandrunner.extend.ExtendCommandRunner;
 import library.commandrunner.help.HelpCommandRunner;
@@ -19,7 +20,7 @@ public interface LibraryCommandRunner extends Runnable {
 
     static void run(Command mainCommand, List<String> commandStrings) {
         LibraryCommandRunner command = switch (mainCommand) {
-            case ADD -> new AddCommandRunner(commandStrings);
+            case ADD -> AddCommandRunnerFactory.getAddCommandRunner(commandStrings);
             case EXIT -> new ExitCommandRunner();
             case EXTEND -> new ExtendCommandRunner(commandStrings);
             case HELP -> new HelpCommandRunner();

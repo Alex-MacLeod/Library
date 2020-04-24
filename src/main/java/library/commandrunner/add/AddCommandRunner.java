@@ -4,10 +4,9 @@ import library.commandrunner.LibraryCommandRunner;
 
 import java.util.List;
 
-public class AddCommandRunner implements LibraryCommandRunner {
+public abstract class AddCommandRunner implements LibraryCommandRunner {
 
     // TODO: Write tests
-    // TODO: Create factory method for dataTypes: library, customers
     // TODO: Construct data object from: cmd, read file
     // TODO: Add object to correct register
 
