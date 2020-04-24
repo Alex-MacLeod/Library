@@ -21,7 +21,7 @@ public class RunLibrary {
             try {
                 initialCommand = Command.valueOf(commands.get(0).toUpperCase());
             } catch (IllegalArgumentException ie) {
-                System.out.println("Did not recognise command \"" + commands.get(0) + "\". Use the \"help\" " +
+                System.out.println("Did not recognise command '\"" + commands.get(0) + "\"'. Use the \"help\" " +
                         "command to see list of valid commands");
                 continue;
             }
