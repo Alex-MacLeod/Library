@@ -1,7 +1,7 @@
 package library.commandrunner.output;
 
 import library.commandrunner.LibraryCommandRunner;
-import library.commandrunner.io.writer.OutputWriter;
+import library.io.writer.OutputWriter;
 
 abstract class OutputCommandRunner implements LibraryCommandRunner {
 

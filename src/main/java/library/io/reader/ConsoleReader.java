@@ -1,4 +1,4 @@
-package library.commandrunner.io.reader;
+package library.io.reader;
 
 public class ConsoleReader implements InputReader {
 }

@@ -2,7 +2,7 @@ package library;
 
 import library.commandrunner.LibraryCommandRunner;
 import library.commandrunner.LibraryCommandRunner.Command;
-import library.util.Input;
+import library.io.reader.Input;
 
 import java.util.Arrays;
 import java.util.List;

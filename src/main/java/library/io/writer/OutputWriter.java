@@ -1,4 +1,4 @@
-package library.commandrunner.io.writer;
+package library.io.writer;
 
 public interface OutputWriter {
 

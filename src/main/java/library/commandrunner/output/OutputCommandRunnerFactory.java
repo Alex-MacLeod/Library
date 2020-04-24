@@ -1,8 +1,8 @@
 package library.commandrunner.output;
 
-import library.commandrunner.io.writer.ConsoleWriter;
-import library.commandrunner.io.writer.FileWriter;
-import library.commandrunner.io.writer.OutputWriter;
+import library.io.writer.ConsoleWriter;
+import library.io.writer.FileWriter;
+import library.io.writer.OutputWriter;
 
 import java.util.List;
 

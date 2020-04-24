@@ -1,6 +1,6 @@
-package library.commandrunner.io.writer;
+package library.io.writer;
 
-import library.util.JSONConverter;
+import library.io.JSONConverter;
 
 public class ConsoleWriter implements OutputWriter {
 

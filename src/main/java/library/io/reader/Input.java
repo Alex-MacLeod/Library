@@ -1,4 +1,4 @@
-package library.util;
+package library.io.reader;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
