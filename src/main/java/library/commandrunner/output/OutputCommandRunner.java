@@ -11,6 +11,10 @@ abstract class OutputCommandRunner implements LibraryCommandRunner {
         this.writer = outputWriter;
     }
 
+    OutputWriter getWriter() {
+        return writer;
+    }
+
     abstract Object getData();
 
     @Override
