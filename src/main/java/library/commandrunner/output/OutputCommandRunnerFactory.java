@@ -12,19 +12,21 @@ public class OutputCommandRunnerFactory {
 
     public static OutputCommandRunner getOutputCommandRunner(List<String> commandStrings) {
         OutputWriter writer;
-        // Default to writing output to console
         String outputWriterType;
         String dataTypeToBeOutputted;
+
         if (commandStrings.size() > 1) {
             outputWriterType = commandStrings.get(0);
             dataTypeToBeOutputted = commandStrings.get(1);
         } else if (commandStrings.size() == 1) {
+            // Default to writing output to console
             outputWriterType = "console";
             dataTypeToBeOutputted = commandStrings.get(0);
         } else {
-            throw new IllegalArgumentException("Too few arguments.");
+            throw new IllegalArgumentException("Too few arguments");
         }
 
+        // Set writer
         if ("console".equals(outputWriterType)) {
             writer = new ConsoleWriter();
         } else if ("file".equals(outputWriterType)) {
@@ -33,6 +35,7 @@ public class OutputCommandRunnerFactory {
             throw new IllegalArgumentException("Invalid output writer '" + outputWriterType + "'");
         }
 
+        // Set data to be outputted
         if ("library".equals(dataTypeToBeOutputted)) {
             return new OutputLibraryCommandRunner(writer);
         } else if ("customers".equals(dataTypeToBeOutputted)) {
