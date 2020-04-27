@@ -4,7 +4,7 @@ import library.commandrunner.LibraryCommandRunner;
 
 import java.util.List;
 
-public abstract class AddCommandRunner implements LibraryCommandRunner {
+abstract class AddCommandRunner implements LibraryCommandRunner {
 
     // TODO: Write tests
     // TODO: Construct data object from: cmd, read file
