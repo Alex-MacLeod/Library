@@ -25,7 +25,7 @@ class OutputCommandRunnerFactoryTest {
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
         assertTrue(outputData instanceof List);
-        assertTrue((((List) outputData).size() > 0 && ((List) outputData).get(0) instanceof Item));
+        assertTrue((((List<?>) outputData).size() > 0 && ((List<?>) outputData).get(0) instanceof Item));
     }
 
     @Test
@@ -39,7 +39,7 @@ class OutputCommandRunnerFactoryTest {
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
         assertTrue(outputData instanceof List);
-        assertTrue((((List) outputData).size() > 0 && ((List) outputData).get(0) instanceof Customer));
+        assertTrue((((List<?>) outputData).size() > 0 && ((List<?>) outputData).get(0) instanceof Customer));
     }
 
     @Test
@@ -53,7 +53,7 @@ class OutputCommandRunnerFactoryTest {
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
         assertTrue(outputData instanceof List);
-        assertTrue((((List) outputData).size() > 0 && ((List) outputData).get(0) instanceof Item));
+        assertTrue((((List<?>) outputData).size() > 0 && ((List<?>) outputData).get(0) instanceof Item));
     }
 
     @Test
@@ -67,7 +67,7 @@ class OutputCommandRunnerFactoryTest {
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
         assertTrue(outputData instanceof List);
-        assertTrue((((List) outputData).size() > 0 && ((List) outputData).get(0) instanceof Customer));
+        assertTrue((((List<?>) outputData).size() > 0 && ((List<?>) outputData).get(0) instanceof Customer));
     }
 
     @Test
@@ -81,7 +81,7 @@ class OutputCommandRunnerFactoryTest {
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
         assertTrue(outputData instanceof List);
-        assertTrue((((List) outputData).size() > 0 && ((List) outputData).get(0) instanceof Item));
+        assertTrue((((List<?>) outputData).size() > 0 && ((List<?>) outputData).get(0) instanceof Item));
     }
 
     @Test
