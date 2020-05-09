@@ -18,7 +18,6 @@ public interface LibraryCommand extends Runnable {
     // TODO: Implement thread executor to run commands
 
     static void run(Command mainCommand, List<String> commandStrings) {
-        commandStrings.remove(0);
         LibraryCommand command = switch (mainCommand) {
             case ADD -> AddCommandFactory.getAddCommand(commandStrings);
             case EXIT -> new ExitCommand();

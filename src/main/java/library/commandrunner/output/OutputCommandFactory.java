@@ -15,13 +15,13 @@ public class OutputCommandFactory {
         String outputWriterType;
         String dataTypeToBeOutputted;
 
-        if (commandStrings.size() > 1) {
-            outputWriterType = commandStrings.get(0);
-            dataTypeToBeOutputted = commandStrings.get(1);
-        } else if (commandStrings.size() == 1) {
+        if (commandStrings.size() > 2) {
+            outputWriterType = commandStrings.get(1);
+            dataTypeToBeOutputted = commandStrings.get(2);
+        } else if (commandStrings.size() == 2) {
             // Default to writing output to console
             outputWriterType = "console";
-            dataTypeToBeOutputted = commandStrings.get(0);
+            dataTypeToBeOutputted = commandStrings.get(1);
         } else {
             throw new IllegalArgumentException("Too few arguments");
         }
