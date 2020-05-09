@@ -1,10 +1,10 @@
 package library.commandrunner.add;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 
 import java.util.List;
 
-abstract class AddCommandRunner implements LibraryCommandRunner {
+abstract class AddCommand implements LibraryCommand {
 
     // TODO: Write tests
     // TODO: Construct data object from: cmd, read file
@@ -12,7 +12,7 @@ abstract class AddCommandRunner implements LibraryCommandRunner {
 
     private final List<String> commandStrings;
 
-    public AddCommandRunner(List<String> commandStrings) {
+    public AddCommand(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

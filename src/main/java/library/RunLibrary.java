@@ -1,7 +1,7 @@
 package library;
 
-import library.commandrunner.LibraryCommandRunner;
-import library.commandrunner.LibraryCommandRunner.Command;
+import library.commandrunner.LibraryCommand;
+import library.commandrunner.LibraryCommand.Command;
 import library.io.reader.Input;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ public class RunLibrary {
                 continue;
             }
 
-            LibraryCommandRunner.run(initialCommand, commands);
+            LibraryCommand.run(initialCommand, commands);
 
             if (Command.EXIT.equals(initialCommand)) {
                 isExited = true;

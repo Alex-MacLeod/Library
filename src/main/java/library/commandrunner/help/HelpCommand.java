@@ -1,8 +1,8 @@
 package library.commandrunner.help;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 
-public class HelpCommandRunner implements LibraryCommandRunner {
+public class HelpCommand implements LibraryCommand {
 
     // TODO: expand options
 

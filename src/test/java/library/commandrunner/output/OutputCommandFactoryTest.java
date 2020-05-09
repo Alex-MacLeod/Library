@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class OutputCommandRunnerFactoryTest {
+class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldCreateLibraryCommandRunnerWithConsoleWriter() {
@@ -20,7 +20,7 @@ class OutputCommandRunnerFactoryTest {
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output write 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommandRunner toBeTested = OutputCommandRunnerFactory.getOutputCommandRunner(args);
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -34,7 +34,7 @@ class OutputCommandRunnerFactoryTest {
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'customers' as a valid data type to be outputted"));
 
-        OutputCommandRunner toBeTested = OutputCommandRunnerFactory.getOutputCommandRunner(args);
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -48,7 +48,7 @@ class OutputCommandRunnerFactoryTest {
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'file'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommandRunner toBeTested = OutputCommandRunnerFactory.getOutputCommandRunner(args);
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
@@ -62,7 +62,7 @@ class OutputCommandRunnerFactoryTest {
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'file'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'customers' as a valid data type to be outputted"));
 
-        OutputCommandRunner toBeTested = OutputCommandRunnerFactory.getOutputCommandRunner(args);
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
@@ -76,7 +76,7 @@ class OutputCommandRunnerFactoryTest {
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output write 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommandRunner toBeTested = OutputCommandRunnerFactory.getOutputCommandRunner(args);
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -87,18 +87,18 @@ class OutputCommandRunnerFactoryTest {
     @Test
     public void factoryShouldThrowExceptionWhenNoArgs() {
         List<String> args = List.of();
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandRunnerFactory.getOutputCommandRunner(args));
+        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
     }
 
     @Test
     public void factoryShouldThrowExceptionWhenInvalidWriterType() {
         List<String> args = List.of("invalidOutput", "library");
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandRunnerFactory.getOutputCommandRunner(args));
+        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
     }
 
     @Test
     public void factoryShouldThrowExceptionWhenInvalidDataType() {
         List<String> args = List.of("console", "invalidData");
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandRunnerFactory.getOutputCommandRunner(args));
+        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
     }
 }

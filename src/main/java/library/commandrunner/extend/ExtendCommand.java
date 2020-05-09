@@ -1,14 +1,14 @@
 package library.commandrunner.extend;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 
 import java.util.List;
 
-public class ExtendCommandRunner implements LibraryCommandRunner {
+public class ExtendCommand implements LibraryCommand {
 
     private final List<String> commandStrings;
 
-    public ExtendCommandRunner(List<String> commandStrings) {
+    public ExtendCommand(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

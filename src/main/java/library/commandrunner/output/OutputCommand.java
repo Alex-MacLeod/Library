@@ -1,13 +1,13 @@
 package library.commandrunner.output;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 import library.io.writer.OutputWriter;
 
-abstract class OutputCommandRunner implements LibraryCommandRunner {
+abstract class OutputCommand implements LibraryCommand {
 
     private final OutputWriter writer;
 
-    public OutputCommandRunner(OutputWriter outputWriter) {
+    public OutputCommand(OutputWriter outputWriter) {
         this.writer = outputWriter;
     }
 

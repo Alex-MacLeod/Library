@@ -6,11 +6,11 @@ import library.io.writer.OutputWriter;
 
 import java.util.List;
 
-public class OutputCommandRunnerFactory {
+public class OutputCommandFactory {
 
-    private OutputCommandRunnerFactory() {}
+    private OutputCommandFactory() {}
 
-    public static OutputCommandRunner getOutputCommandRunner(List<String> commandStrings) {
+    public static OutputCommand getOutputCommand(List<String> commandStrings) {
         OutputWriter writer;
         String outputWriterType;
         String dataTypeToBeOutputted;
@@ -37,9 +37,9 @@ public class OutputCommandRunnerFactory {
 
         // Set data to be outputted
         if ("library".equals(dataTypeToBeOutputted)) {
-            return new OutputLibraryCommandRunner(writer);
+            return new OutputLibraryCommand(writer);
         } else if ("customers".equals(dataTypeToBeOutputted)) {
-            return new OutputCustomersCommandRunner(writer);
+            return new OutputCustomersCommand(writer);
         } else {
             throw new IllegalArgumentException("Did not recognise '" + dataTypeToBeOutputted + "' as a valid data type to be outputted");
         }

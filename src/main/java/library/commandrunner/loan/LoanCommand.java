@@ -1,6 +1,6 @@
 package library.commandrunner.loan;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 import library.customer.Customer;
 import library.item.Borrowable;
 import library.item.Item;
@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-public class LoanCommandRunner implements LibraryCommandRunner {
+public class LoanCommand implements LibraryCommand {
 
     private final List<String> commandStrings;
 
-    public LoanCommandRunner(List<String> commandStrings) {
+    public LoanCommand(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 
