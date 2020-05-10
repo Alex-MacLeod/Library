@@ -1,0 +1,56 @@
+[
+  {
+    "type" : "Book",
+    "name": "The Road to Wigan Pier",
+    "id": "13e611a8-0aa3-40df-b47a-b214dc1ea1dd",
+    "author": "George Orwell",
+    "yearPublished": 1937,
+    "onLoan": false,
+    "loanExpiryDate": null,
+    "isFiction": false,
+    "isForKids": true
+  },
+  {
+    "type" : "Book",
+    "name": "Nineteen Eighty-Four",
+    "id": "08f40c8d-5397-4671-868b-764336e9526b",
+    "author": "George Orwell",
+    "yearPublished": 1949,
+    "onLoan": false,
+    "loanExpiryDate": null,
+    "isFiction": true,
+    "isForKids": false
+  },
+  {
+    "type" : "Book",
+    "name": "The Count of Monte Cristo",
+    "id": "bb39af23-5afe-452f-8a38-7f79ca22fa77",
+    "author": "Alexandre Dumas",
+    "yearPublished": 1846,
+    "onLoan": false,
+    "loanExpiryDate": null,
+    "isFiction": true,
+    "isForKids": false
+  },
+  {
+    "type" : "Magazine",
+    "name": "The Economist",
+    "id": "f3e5abf3-1dfa-48a1-be36-8a201bb3ba79",
+    "author": "The Economist Group",
+    "yearPublished": 1961,
+    "onLoan": false,
+    "loanExpiryDate": null,
+    "issueNumber": 783
+  },
+  {
+    "type" : "PublicRecord",
+    "name": "Milton Keynes City Council General Meeting Minutes 23/01/1994",
+    "id": "a2f72586-d991-4fd9-bd4b-c5a0543a3172",
+    "author": "Milton Keynes City Council",
+    "yearPublished": 1994,
+    "onLoan": false,
+    "loanExpiryDate": null,
+    "digitised": false,
+    "recordType": "meeting"
+  }
+]

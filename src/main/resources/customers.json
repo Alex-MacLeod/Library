@@ -1,0 +1,15 @@
+[
+  {
+    "name": ["John", "Smith"],
+    "email": "john.smith@email.com",
+    "dateOfBirth": "2000-01-01",
+    "id": "1386bec2-07d1-4fe0-9b20-d603f312c10b",
+    "address": {
+      "streetAddress": "1 Generic Street",
+      "place": "Anytown",
+      "county": "Somewhereshire",
+      "postCode": "A11 1AA"
+    },
+    "itemsBorrowed": []
+  }
+]
