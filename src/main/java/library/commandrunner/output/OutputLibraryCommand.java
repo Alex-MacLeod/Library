@@ -3,11 +3,11 @@ package library.commandrunner.output;
 import library.register.Library;
 import library.io.writer.OutputWriter;
 
-class OutputLibraryCommandRunner extends OutputCommandRunner {
+class OutputLibraryCommand extends OutputCommand {
 
     // TODO: Create tests
 
-    public OutputLibraryCommandRunner(OutputWriter outputWriter) {
+    public OutputLibraryCommand(OutputWriter outputWriter) {
         super(outputWriter);
     }
 

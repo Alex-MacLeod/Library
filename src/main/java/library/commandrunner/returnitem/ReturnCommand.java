@@ -1,14 +1,14 @@
 package library.commandrunner.returnitem;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 
 import java.util.List;
 
-public class ReturnCommandRunner implements LibraryCommandRunner {
+public class ReturnCommand implements LibraryCommand {
 
     private final List<String> commandStrings;
 
-    public ReturnCommandRunner(List<String> commandStrings) {
+    public ReturnCommand(List<String> commandStrings) {
         this.commandStrings = commandStrings;
     }
 

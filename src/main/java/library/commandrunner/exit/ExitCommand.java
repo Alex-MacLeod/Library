@@ -1,8 +1,8 @@
 package library.commandrunner.exit;
 
-import library.commandrunner.LibraryCommandRunner;
+import library.commandrunner.LibraryCommand;
 
-public class ExitCommandRunner implements LibraryCommandRunner {
+public class ExitCommand implements LibraryCommand {
 
     @Override
     public void run() {

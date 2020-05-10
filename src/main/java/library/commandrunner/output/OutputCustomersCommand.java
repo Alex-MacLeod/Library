@@ -3,11 +3,11 @@ package library.commandrunner.output;
 import library.register.CustomerRegister;
 import library.io.writer.OutputWriter;
 
-class OutputCustomersCommandRunner extends OutputCommandRunner {
+class OutputCustomersCommand extends OutputCommand {
 
     // TODO: Create tests
 
-    public OutputCustomersCommandRunner(OutputWriter outputWriter) {
+    public OutputCustomersCommand(OutputWriter outputWriter) {
         super(outputWriter);
     }
 

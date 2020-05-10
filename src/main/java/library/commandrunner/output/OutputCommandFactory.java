@@ -6,22 +6,22 @@ import library.io.writer.OutputWriter;
 
 import java.util.List;
 
-public class OutputCommandRunnerFactory {
+public class OutputCommandFactory {
 
-    private OutputCommandRunnerFactory() {}
+    private OutputCommandFactory() {}
 
-    public static OutputCommandRunner getOutputCommandRunner(List<String> commandStrings) {
+    public static OutputCommand getOutputCommand(List<String> commandStrings) {
         OutputWriter writer;
         String outputWriterType;
         String dataTypeToBeOutputted;
 
-        if (commandStrings.size() > 1) {
-            outputWriterType = commandStrings.get(0);
-            dataTypeToBeOutputted = commandStrings.get(1);
-        } else if (commandStrings.size() == 1) {
+        if (commandStrings.size() > 2) {
+            outputWriterType = commandStrings.get(1);
+            dataTypeToBeOutputted = commandStrings.get(2);
+        } else if (commandStrings.size() == 2) {
             // Default to writing output to console
             outputWriterType = "console";
-            dataTypeToBeOutputted = commandStrings.get(0);
+            dataTypeToBeOutputted = commandStrings.get(1);
         } else {
             throw new IllegalArgumentException("Too few arguments");
         }
@@ -37,9 +37,9 @@ public class OutputCommandRunnerFactory {
 
         // Set data to be outputted
         if ("library".equals(dataTypeToBeOutputted)) {
-            return new OutputLibraryCommandRunner(writer);
+            return new OutputLibraryCommand(writer);
         } else if ("customers".equals(dataTypeToBeOutputted)) {
-            return new OutputCustomersCommandRunner(writer);
+            return new OutputCustomersCommand(writer);
         } else {
             throw new IllegalArgumentException("Did not recognise '" + dataTypeToBeOutputted + "' as a valid data type to be outputted");
         }
