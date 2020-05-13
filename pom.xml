@@ -6,7 +6,7 @@
 
     <groupId>library-booking-system</groupId>
     <artifactId>library-booking-system</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.2.1-SNAPSHOT</version>
 
     <name>library-booking-system</name>
     <url>http://maven.apache.org</url>
