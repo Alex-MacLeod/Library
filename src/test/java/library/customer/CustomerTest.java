@@ -6,9 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CustomerTest {
@@ -27,52 +25,36 @@ class CustomerTest {
     }
 
     @Test
-    public void libraryCustomerBuilderShouldCreateANewCustomer() {
-        Address newCustomerAddress = new Address("4 Privet Drive","Little Whinging",
-                "Surrey","W1Z 4RD");
-
-        testCustomer = new CustomerBuilder()
-                .name("Harry", "Potter")
-                .email("hpotter@hogwarts.ac.uk")
-                .dob(LocalDate.of(1980, 7, 31))
-                .address(newCustomerAddress)
-                .buildCustomer();
-
-        String[] expectedName3 = new String[]{"Harry", "Potter"};
-
-        assertArrayEquals(expectedName3, testCustomer.getName());
-        assertEquals("hpotter@hogwarts.ac.uk", testCustomer.getEmail());
-        assertEquals(1980, testCustomer.getDateOfBirth().getYear());
-        assertEquals(Month.JULY, testCustomer.getDateOfBirth().getMonth());
-        assertEquals(31, testCustomer.getDateOfBirth().getDayOfMonth());
-        assertEquals("4 Privet Drive", testCustomer.getAddress().getStreetAddress());
-        assertEquals("Little Whinging", testCustomer.getAddress().getPlace());
-        assertEquals("Surrey", testCustomer.getAddress().getCounty());
-        assertEquals("W1Z 4RD", testCustomer.getAddress().getPostCode());
-    }
-
-    @Test
     public void borrowShouldAddItemToItemsBorrowedOnlyIfNotOnLoan() {
+        // Given
         testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
+
+        // When
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
 
         testCustomer.borrow(testItem2, 6L);
 
+        // Then
         assertEquals(1, testCustomer.getItemsBorrowed().size());
     }
 
     @Test
     public void borrowShouldNotAddItemToItemsBorrowedIfItemRejectsLoan() {
+        // Given
         testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
+
+        // When
         testCustomer.borrow(testItem1);
 
+        // Then
         assertEquals(0, testCustomer.getItemsBorrowed().size());
     }
 
     @Test
     public void returnItemShouldRemoveItemFromItemsBorrowedIfCustomerHasBorrowedIt() {
+        // Given
         testCustomer = new CustomerBuilder().dob(LocalDate.of(1990,1,1)).buildCustomer();
 
         testCustomer.borrow(testItem1);
@@ -80,20 +62,25 @@ class CustomerTest {
 
         assertEquals(2, testCustomer.getItemsBorrowed().size());
 
+        // When
         testCustomer.returnToLibrary(testItem1.getID());
 
+        // Then
         assertEquals(1, testCustomer.getItemsBorrowed().size());
     }
 
     @Test
     public void returnItemShouldNotRemoveItemFromItemsBorrowedIfCustomerHasNotBorrowedIt() {
+        // Given
         testCustomer = new CustomerBuilder().dob(LocalDate.now()).buildCustomer();
         testCustomer.borrow(testItem2);
 
         assertEquals(1, testCustomer.getItemsBorrowed().size());
 
+        // When
         testCustomer.returnToLibrary(testItem1.getID());
 
+        // Then
         assertEquals(1, testCustomer.getItemsBorrowed().size());
     }
 }
