@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -16,11 +17,16 @@ class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldCreateLibraryCommandRunnerWithConsoleWriter() {
-        List<String> args = List.of("console", "library");
+        // Given
+        List<String> args = List.of("output", "console", "library");
+
+        // When
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
+
+        // Then
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output write 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -30,11 +36,16 @@ class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldCreateCustomerCommandRunnerWithConsoleWriter() {
-        List<String> args = List.of("console", "customers");
+        // Given
+        List<String> args = List.of("output", "console", "customers");
+
+        // When
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
+
+        // Then
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'customers' as a valid data type to be outputted"));
 
-        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -44,11 +55,16 @@ class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldCreateLibraryCommandRunnerWithFileWriter() {
-        List<String> args = List.of("file", "library");
+        // Given
+        List<String> args = List.of("output", "file", "library");
+
+        // When
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
+
+        // Then
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'file'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
@@ -58,11 +74,16 @@ class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldCreateCustomerCommandRunnerWithFileWriter() {
-        List<String> args = List.of("file", "customers");
+        // Given
+        List<String> args = List.of("output", "file", "customers");
+
+        // When
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
+
+        // Then
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output writer 'file'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'customers' as a valid data type to be outputted"));
 
-        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof FileWriter);
@@ -72,11 +93,16 @@ class OutputCommandFactoryTest {
 
     @Test
     public void noWriterArgumentShouldDefaultToConsole() {
-        List<String> args = List.of("library");
+        // Given
+        List<String> args = List.of("output", "library");
+
+        // When
+        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
+
+        // Then
         assertDoesNotThrow(() -> new IllegalArgumentException("Invalid output write 'console'"));
         assertDoesNotThrow(() -> new IllegalArgumentException("Did not recognise 'library' as a valid data type to be outputted"));
 
-        OutputCommand toBeTested = OutputCommandFactory.getOutputCommand(args);
         Object outputData = toBeTested.getData();
 
         assertTrue(toBeTested.getWriter() instanceof ConsoleWriter);
@@ -86,19 +112,31 @@ class OutputCommandFactoryTest {
 
     @Test
     public void factoryShouldThrowExceptionWhenNoArgs() {
+        // Given
         List<String> args = List.of();
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+
+        // When/Then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+        assertEquals("Too few arguments", exception.getMessage());
     }
 
     @Test
     public void factoryShouldThrowExceptionWhenInvalidWriterType() {
-        List<String> args = List.of("invalidOutput", "library");
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+        // Given
+        List<String> args = List.of("output", "invalidWriter", "library");
+
+        // When/Then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+        assertEquals("Invalid output writer 'invalidWriter'", exception.getMessage());
     }
 
     @Test
     public void factoryShouldThrowExceptionWhenInvalidDataType() {
-        List<String> args = List.of("console", "invalidData");
-        assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+        // Given
+        List<String> args = List.of("output", "console", "invalidData");
+
+        // When/Then
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> OutputCommandFactory.getOutputCommand(args));
+        assertEquals("Did not recognise 'invalidData' as a valid data type to be outputted", exception.getMessage());
     }
 }
