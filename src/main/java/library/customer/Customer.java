@@ -69,10 +69,10 @@ public class Customer {
     }
 
     public Customer update(String name, String email, LocalDate dateOfBirth, Address address) {
-        this.name = name;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
+        if (name != null) this.name = name;
+        if (email != null) this.email = email;
+        if (dateOfBirth != null) this.dateOfBirth = dateOfBirth;
+        if (address != null) this.address = address;
         return this;
     }
 
