@@ -19,7 +19,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
 
-    private String[] name;
+    private String name;
     private String email;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -29,10 +29,10 @@ public class Customer {
 
     private final UUID id;
     private Address address;
-    private List<Borrowable> itemsBorrowed;
+    private final List<Borrowable> itemsBorrowed;
 
     @JsonCreator
-    Customer(@JsonProperty("name")String[] name,
+    Customer(@JsonProperty("name")String name,
              @JsonProperty("email")String email,
              @JsonProperty("dateOfBirth")LocalDate dateOfBirth,
              @JsonProperty("address")Address address) {
@@ -44,8 +44,8 @@ public class Customer {
         this.itemsBorrowed = new ArrayList<>();
     }
 
-    public String[] getName() {
-        return this.name.clone();
+    public String getName() {
+        return this.name;
     }
 
     public String getEmail() {
@@ -68,8 +68,8 @@ public class Customer {
         return this.itemsBorrowed;
     }
 
-    public Customer update(String[] name, String email, LocalDate dateOfBirth, Address address) {
-        this.name = name.clone();
+    public Customer update(String name, String email, LocalDate dateOfBirth, Address address) {
+        this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
@@ -93,7 +93,7 @@ public class Customer {
 
     public void returnToLibrary(UUID itemID) {
         if (this.itemsBorrowed.isEmpty()) {
-            System.out.println("Customer has not borrowed any books");
+            System.err.println("Customer has not borrowed any books");
         } else {
             for (Borrowable item : this.itemsBorrowed) {
                 if (itemID.equals(item.getID())) {

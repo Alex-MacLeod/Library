@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class CustomerBuilder {
 
-    private String[] name;
+    private String name;
     private String email;
     private LocalDate dateOfBirth;
     private Address address;
@@ -13,8 +13,8 @@ public class CustomerBuilder {
         return new Customer(name, email, dateOfBirth, address);
     }
 
-    public CustomerBuilder name(String forename, String surname) {
-        this.name = new String[]{forename, surname};
+    public CustomerBuilder name(String name) {
+        this.name = name;
         return this;
     }
 
