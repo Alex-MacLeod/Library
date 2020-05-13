@@ -37,10 +37,12 @@ class CustomerBuilderTest {
                 () -> assertEquals(Month.JULY, testCustomer.getDateOfBirth().getMonth()),
                 () -> assertEquals(31, testCustomer.getDateOfBirth().getDayOfMonth())
         );
-        assertEquals("4 Privet Drive", testCustomer.getAddress().getStreetAddress());
-        assertEquals("Little Whinging", testCustomer.getAddress().getPlace());
-        assertEquals("Surrey", testCustomer.getAddress().getCounty());
-        assertEquals("W1Z 4RD", testCustomer.getAddress().getPostCode());
+        assertAll("Address",
+                () -> assertEquals("4 Privet Drive", testCustomer.getAddress().getStreetAddress()),
+                () -> assertEquals("Little Whinging", testCustomer.getAddress().getPlace()),
+                () -> assertEquals("Surrey", testCustomer.getAddress().getCounty()),
+                () -> assertEquals("W1Z 4RD", testCustomer.getAddress().getPostCode())
+        );
     }
 
     @Test
