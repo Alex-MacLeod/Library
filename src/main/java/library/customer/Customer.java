@@ -83,7 +83,7 @@ public class Customer {
                 this.itemsBorrowed.add(item);
             }
         } else {
-            System.out.println("You cannot borrow this item, it is already on loan!");
+            System.err.println("You cannot borrow this item, it is already on loan!");
         }
     }
 
@@ -101,7 +101,7 @@ public class Customer {
                     item.returnFromLoan();
                     break;
                 } else {
-                    System.out.println("Customer has not borrowed this item, so cannot return it");
+                    System.err.println("Customer has not borrowed this item, so cannot return it");
                 }
             }
         }
