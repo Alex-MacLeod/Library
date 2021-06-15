@@ -19,7 +19,7 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
 
-    private String[] name;
+    private String name;
     private String email;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
@@ -29,10 +29,10 @@ public class Customer {
 
     private final UUID id;
     private Address address;
-    private List<Borrowable> itemsBorrowed;
+    private final List<Borrowable> itemsBorrowed;
 
     @JsonCreator
-    Customer(@JsonProperty("name")String[] name,
+    Customer(@JsonProperty("name")String name,
              @JsonProperty("email")String email,
              @JsonProperty("dateOfBirth")LocalDate dateOfBirth,
              @JsonProperty("address")Address address) {
@@ -44,8 +44,8 @@ public class Customer {
         this.itemsBorrowed = new ArrayList<>();
     }
 
-    public String[] getName() {
-        return this.name.clone();
+    public String getName() {
+        return this.name;
     }
 
     public String getEmail() {
@@ -68,11 +68,11 @@ public class Customer {
         return this.itemsBorrowed;
     }
 
-    public Customer update(String[] name, String email, LocalDate dateOfBirth, Address address) {
-        this.name = name.clone();
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
+    public Customer update(String name, String email, LocalDate dateOfBirth, Address address) {
+        if (name != null) this.name = name;
+        if (email != null) this.email = email;
+        if (dateOfBirth != null) this.dateOfBirth = dateOfBirth;
+        if (address != null) this.address = address;
         return this;
     }
 
@@ -83,7 +83,7 @@ public class Customer {
                 this.itemsBorrowed.add(item);
             }
         } else {
-            System.out.println("You cannot borrow this item, it is already on loan!");
+            System.err.println("You cannot borrow this item, it is already on loan!");
         }
     }
 
@@ -93,7 +93,7 @@ public class Customer {
 
     public void returnToLibrary(UUID itemID) {
         if (this.itemsBorrowed.isEmpty()) {
-            System.out.println("Customer has not borrowed any books");
+            System.err.println("Customer has not borrowed any books");
         } else {
             for (Borrowable item : this.itemsBorrowed) {
                 if (itemID.equals(item.getID())) {
@@ -101,7 +101,7 @@ public class Customer {
                     item.returnFromLoan();
                     break;
                 } else {
-                    System.out.println("Customer has not borrowed this item, so cannot return it");
+                    System.err.println("Customer has not borrowed this item, so cannot return it");
                 }
             }
         }

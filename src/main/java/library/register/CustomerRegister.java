@@ -38,7 +38,7 @@ public class CustomerRegister {
     public static List<Customer> find(String name) {
         List<Customer> foundCustomers = new ArrayList<>();
         for (Customer customer : getRegister()) {
-            if (name.equals(customer.getName()[1])) {
+            if (name.equals(customer.getName())) {
                 foundCustomers.add(customer);
             }
         }
