@@ -1,5 +1,7 @@
 package library.commandrunner.add;
 
+import library.commandrunner.add.annotation.AddDataType;
+
 import java.util.List;
 
 public class AddCommandFactory {
@@ -7,7 +9,8 @@ public class AddCommandFactory {
     private AddCommandFactory() {}
 
     public static AddCommand<?> getAddCommand(List<String> commandStrings) {
-        String dataTypeToBeAdded = commandStrings.get(1);
+        @SuppressWarnings("deprecation")
+        @AddDataType(message = "Not a valid thing to be added") String dataTypeToBeAdded = commandStrings.get(1);
         if ("item".equals(dataTypeToBeAdded)) {
             return new AddLibraryItemCommand(commandStrings);
         } else if ("customer".equals(dataTypeToBeAdded)) {
