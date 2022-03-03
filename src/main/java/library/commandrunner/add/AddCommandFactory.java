@@ -6,7 +6,7 @@ public class AddCommandFactory {
 
     private AddCommandFactory() {}
 
-    public static AddCommand getAddCommand(List<String> commandStrings) {
+    public static AddCommand<?> getAddCommand(List<String> commandStrings) {
         String dataTypeToBeAdded = commandStrings.get(1);
         if ("item".equals(dataTypeToBeAdded)) {
             return new AddLibraryItemCommand(commandStrings);
