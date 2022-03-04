@@ -9,7 +9,8 @@ import java.util.List;
 
 public class RunLibrary {
 
-    public static void main(String[] args) {
+    @SafeVarargs
+    public static void main(String... args) {
 
         boolean isExited = false;
 
